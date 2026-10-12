@@ -174,6 +174,8 @@
   --mark-solid: 62%;
   --mark-rim: oklch(1 0 0);
   --mark-edge: oklch(0.3 0.02 265 / 22%);
+  /* The same hairline where it is a stroke in a chart: half of a stroke falls outside the shape. */
+  --mark-line: oklch(0.3 0.02 265 / 30%);
   --glass-blur: blur(26px) saturate(180%);
   --glass-blur-control: blur(14px);
 
@@ -279,6 +281,7 @@
   --mark-solid: 68%;
   --mark-rim: oklch(1 0 0);
   --mark-edge: oklch(1 0 0 / 22%);
+  --mark-line: oklch(1 0 0 / 46%);
   /* Neutral grey, like the page: no tint of its own, and it blurs what is
      behind it without boosting its colour. A pane that leans blue beside a
      grey one reads as a second palette. */
@@ -908,15 +911,20 @@
    A bar is a pane of glass standing on its edge: the series' own colour let
    through a little, a hairline round it, and the line of light along its top.
    An SVG shape has no inset shadow to draw that line with, so it is the bar's
-   own shape drawn again one pixel higher, behind it. (A filter that drew the
-   line inside the bar was tried: the bars vanished whenever an ancestor was
-   zoomed, so this stays with what every browser draws the same.) */
+   own shape drawn again one pixel higher, behind it.
+
+   The bar itself is kept whole and the whole of it, line and all, is then let
+   through together. Thinning the fill instead put the white copy behind a
+   see-through face: it showed through all of it, and the bar came out a flat
+   pale block with no line to be seen. (A filter that drew the line inside the
+   bar was tried too: the bars vanished whenever an ancestor was zoomed, so
+   this stays with what every browser draws the same.) */
 
 [data-slot="chart"] :is(.recharts-bar-rectangle .recharts-rectangle, .recharts-pie-sector .recharts-sector, .recharts-radial-bar-sector) {
-  fill-opacity: var(--mark-solid);
-  stroke: var(--mark-edge);
+  stroke: var(--mark-line);
   stroke-width: 1px;
   filter: drop-shadow(0 -1px 0 var(--mark-rim));
+  opacity: var(--mark-solid);
 }
 /* The same mark made of a box rather than drawn in a chart: a bar in a row of
    them, a meter, anything filled with one of the chart's colours. It is the

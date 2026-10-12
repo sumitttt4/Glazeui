@@ -21,6 +21,10 @@ function ScrollToTop() {
 }
 
 export function App() {
+  const { pathname } = useLocation()
+  // The README's banner is a picture of the material and nothing else: no header, no footer behind it.
+  if (import.meta.env.DEV && pathname === "/dev/banner") return <DevBanner />
+
   return (
     <TooltipProvider>
       <ScrollToTop />
@@ -36,7 +40,6 @@ export function App() {
               <Route path=":slug" element={<DocPage section="docs" />} />
             </Route>
             {import.meta.env.DEV && <Route path="dev/examples" element={<DevExamples />} />}
-            {import.meta.env.DEV && <Route path="dev/banner" element={<DevBanner />} />}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>

@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/sonner"
 import { Toaster as ToastToaster } from "@/components/ui/toast"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { Home } from "@/pages/home"
+import { DevBanner } from "@/pages/dev-banner"
 import { DevExamples } from "@/pages/dev-examples"
 import { ComponentsIndex, DocPage, DocsLayout } from "@/site/docs"
 import { SiteFooter } from "@/site/site-footer"
@@ -35,6 +36,7 @@ export function App() {
               <Route path=":slug" element={<DocPage section="docs" />} />
             </Route>
             {import.meta.env.DEV && <Route path="dev/examples" element={<DevExamples />} />}
+            {import.meta.env.DEV && <Route path="dev/banner" element={<DevBanner />} />}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>

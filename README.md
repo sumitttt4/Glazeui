@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/screenshots/home-dark.png" alt="Solid Glass" width="820">
+<img src="docs/banner.png" alt="Solid Glass: form with substance" width="820">
 
 </div>
 
@@ -29,6 +29,8 @@ takes no colour from what is behind it, bends nothing and does not flow.
 
 **[waylandyang.github.io/solid-glass](https://waylandyang.github.io/solid-glass)** shows every
 shadcn/ui component in the material, plus a dozen components of Solid Glass's own.
+
+![The home page in the dark theme](docs/screenshots/home-dark.png)
 
 ![The home page in the light theme](docs/screenshots/home-light.png)
 
@@ -102,6 +104,9 @@ npm run dev         # http://localhost:5191
 npm run build       # into dist/
 npm run typecheck
 ```
+
+`/dev/banner` (development only) is the banner above, drawn with the theme: `docs/banner.png` is a
+screenshot of it in an 820 by 200 window at twice the size.
 
 `/dev/examples` (development only) mounts every example at once and lists any that fail. It takes
 `?q=button,card` to show some of them, `?theme=light`, `?hover=<selector>` to show what matches as

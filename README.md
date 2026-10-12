@@ -28,7 +28,7 @@ light along the top, a hairline all round, a shadow gathered underneath); the fa
 takes no colour from what is behind it, bends nothing and does not flow.
 
 **[deeplethe.github.io/solid-glass](https://deeplethe.github.io/solid-glass)** shows it at work: some
-sixty components in the material, a dozen of them made for interfaces where an agent works. On its
+seventy components in the material, among them a set made for interfaces where an agent works. On its
 [Create](https://deeplethe.github.io/solid-glass/create) page the glass can be tuned (thinner, thicker,
 tinted, another radius, another face) and the result copied out as a few lines of CSS.
 

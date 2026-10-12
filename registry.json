@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "solid-glass",
-  "homepage": "https://waylandyang.github.io/solid-glass",
+  "homepage": "https://deeplethe.github.io/solid-glass",
   "items": [
     {
       "name": "solid-glass",
@@ -182,7 +182,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "https://waylandyang.github.io/solid-glass/r/diff-view.json"
+        "https://deeplethe.github.io/solid-glass/r/diff-view.json"
       ],
       "files": [
         {
@@ -200,7 +200,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "https://waylandyang.github.io/solid-glass/r/status-glyph.json"
+        "https://deeplethe.github.io/solid-glass/r/status-glyph.json"
       ],
       "files": [
         {

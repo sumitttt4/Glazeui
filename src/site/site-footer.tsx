@@ -13,7 +13,7 @@ export function SiteFooter() {
               Base UI
             </a>
             . The source is on{" "}
-            <a href="https://github.com/WaylandYang/solid-glass" target="_blank" rel="noreferrer" className="font-medium underline underline-offset-4">
+            <a href="https://github.com/deeplethe/solid-glass" target="_blank" rel="noreferrer" className="font-medium underline underline-offset-4">
               GitHub
             </a>
             .

@@ -4,10 +4,10 @@
   "version": "0.1.0",
   "description": "A theme for shadcn/ui: thick, smoky panes with the weight of a solid surface and the clarity of glass.",
   "license": "MIT",
-  "homepage": "https://waylandyang.github.io/solid-glass",
+  "homepage": "https://deeplethe.github.io/solid-glass",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/WaylandYang/solid-glass.git"
+    "url": "git+https://github.com/deeplethe/solid-glass.git"
   },
   "type": "module",
   "scripts": {

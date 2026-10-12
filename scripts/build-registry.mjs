@@ -21,7 +21,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..")
 const out = join(root, "public/r")
 const read = (path) => readFileSync(join(root, path), "utf8")
 // Where the site is served from. Solid Glass's own components name one another by it.
-const origin = (process.env.SOLID_GLASS_ORIGIN ?? "https://waylandyang.github.io/solid-glass").replace(/\/$/, "")
+const origin = (process.env.SOLID_GLASS_ORIGIN ?? "https://deeplethe.github.io/solid-glass").replace(/\/$/, "")
 
 const own = readdirSync(join(root, "content/solid"))
   .map((file) => file.replace(/\.mdx$/, ""))

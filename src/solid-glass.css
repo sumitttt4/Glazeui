@@ -276,7 +276,7 @@
   --focus-line: oklch(1 0 0 / 40%);
   --knob: oklch(0.97 0 0);
   --knob-shade: oklch(0 0 0 / 55%);
-  --mark-solid: 48%;
+  --mark-solid: 68%;
   --mark-rim: oklch(1 0 0);
   --mark-edge: oklch(1 0 0 / 22%);
   /* Neutral grey, like the page: no tint of its own, and it blurs what is
@@ -304,11 +304,11 @@
   --syn-number: oklch(0.8 0.12 80);
   --syn-name: oklch(0.78 0.11 305);
 
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.72 0 0);
-  --chart-3: oklch(0.556 0 0);
-  --chart-4: oklch(0.439 0 0);
-  --chart-5: oklch(0.34 0 0);
+  --chart-1: oklch(0.94 0 0);
+  --chart-2: oklch(0.83 0 0);
+  --chart-3: oklch(0.69 0 0);
+  --chart-4: oklch(0.56 0 0);
+  --chart-5: oklch(0.44 0 0);
 
   --sidebar: oklch(0.11 0 0 / 50%);
   --sidebar-foreground: oklch(0.9 0 0);

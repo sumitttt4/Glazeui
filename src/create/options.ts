@@ -133,7 +133,7 @@ export const CHART_HUE: Record<string, number> = {
   pink: 350,
   rose: 12,
 }
-const CHART_LIGHT: Record<Mode, number[]> = { dark: [0.87, 0.72, 0.556, 0.439, 0.34], light: [0.87, 0.556, 0.439, 0.371, 0.269] }
+const CHART_LIGHT: Record<Mode, number[]> = { dark: [0.94, 0.83, 0.69, 0.56, 0.44], light: [0.87, 0.556, 0.439, 0.371, 0.269] }
 const CHART_CHROMA = [0.07, 0.13, 0.15, 0.13, 0.1]
 
 const RADIUS: Record<string, [string, string]> = { none: ["0rem", "0rem"], small: ["0.5rem", "0.4rem"], large: ["1.125rem", "0.9rem"] }

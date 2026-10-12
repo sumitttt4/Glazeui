@@ -58,12 +58,20 @@ export function DevBanner() {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-between overflow-hidden rounded-[22px] bg-background px-11 shadow-[inset_0_0_0_1px_var(--glass-edge)]">
-      <div className="flex flex-col gap-3">
+      {/* Light, so the glass has something to be glass over: one patch behind the panes, where the
+          thinnest lets the most of it through and the thickest next to none, and two fainter ones to
+          keep the rest of the picture from going flat. The site's dark page has none; this is a
+          poster, not a page to read. */}
+      <span aria-hidden className="absolute top-[70px] left-[440px] size-[250px] rounded-full bg-[oklch(0.78_0.1_250)] opacity-40 blur-[64px]" />
+      <span aria-hidden className="absolute -top-[90px] right-[-40px] size-[220px] rounded-full bg-[oklch(0.85_0.07_205)] opacity-25 blur-[60px]" />
+      <span aria-hidden className="absolute -bottom-[120px] left-[-60px] size-[260px] rounded-full bg-white opacity-[0.09] blur-[70px]" />
+
+      <div className="relative flex flex-col gap-5">
         <div className="flex items-center gap-3.5">
           <SolidGlassMark className="size-11" />
           <GlassWordmark first="Solid" second="Glass" />
         </div>
-        <p className="pl-0.5 text-[17px] text-muted-foreground">
+        <p className="pl-[2.75px] text-[17px] leading-none text-muted-foreground">
           by <span className="ml-0.5 font-logo text-[18px] tracking-[0.14em] text-foreground/90">DeepLethe</span>
         </p>
       </div>

@@ -43,10 +43,23 @@ export const OPTIONS = {
     label: "Chart Color",
     choices: [
       { value: "neutral", label: "Neutral" },
-      { value: "blue", label: "Blue" },
-      { value: "green", label: "Green" },
+      { value: "red", label: "Red" },
+      { value: "orange", label: "Orange" },
       { value: "amber", label: "Amber" },
+      { value: "yellow", label: "Yellow" },
+      { value: "lime", label: "Lime" },
+      { value: "green", label: "Green" },
+      { value: "emerald", label: "Emerald" },
+      { value: "teal", label: "Teal" },
+      { value: "cyan", label: "Cyan" },
+      { value: "sky", label: "Sky" },
+      { value: "blue", label: "Blue" },
+      { value: "indigo", label: "Indigo" },
       { value: "violet", label: "Violet" },
+      { value: "purple", label: "Purple" },
+      { value: "fuchsia", label: "Fuchsia" },
+      { value: "pink", label: "Pink" },
+      { value: "rose", label: "Rose" },
     ],
     default: "neutral",
   },
@@ -100,7 +113,26 @@ const PANES: Record<Mode, { background: number; card: [number, number[]]; panel:
   light: { background: 0.925, card: [0.98, [40, 60, 82]], panel: [0.975, [28, 44, 64]], popover: [0.985, [86, 96, 99]], solid: [0.947, 0.958, 0.98] },
 }
 
-const CHART_HUE: Record<string, number> = { blue: 250, green: 155, amber: 75, violet: 300 }
+/** Where each chart colour sits on the wheel; the five steps of a chart share it and differ in lightness. */
+export const CHART_HUE: Record<string, number> = {
+  red: 27,
+  orange: 50,
+  amber: 75,
+  yellow: 98,
+  lime: 128,
+  green: 150,
+  emerald: 163,
+  teal: 183,
+  cyan: 212,
+  sky: 235,
+  blue: 255,
+  indigo: 275,
+  violet: 293,
+  purple: 307,
+  fuchsia: 325,
+  pink: 350,
+  rose: 12,
+}
 const CHART_LIGHT: Record<Mode, number[]> = { dark: [0.87, 0.72, 0.556, 0.439, 0.34], light: [0.87, 0.556, 0.439, 0.371, 0.269] }
 const CHART_CHROMA = [0.07, 0.13, 0.15, 0.13, 0.1]
 

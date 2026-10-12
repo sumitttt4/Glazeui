@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { code, DEFAULTS, encode, fontFamily, KEYS, OPTIONS, shuffle, type Mode, type OptionKey, type Options } from "@/create/options"
+import { CHART_HUE, code, DEFAULTS, encode, fontFamily, KEYS, OPTIONS, shuffle, type Mode, type OptionKey, type Options } from "@/create/options"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import { CodeBlock } from "@/site/code"
 
@@ -23,12 +23,12 @@ function Sign({ option, value }: { option: OptionKey | "mode"; value: string }) 
     return <span style={{ borderTopLeftRadius: corner }} className="size-4 border-t-2 border-l-2 border-foreground/70" />
   }
   if (option === "chart") {
-    const hue = { blue: 250, green: 155, amber: 75, violet: 300 }[value]
-    return <span style={{ background: hue === undefined ? "var(--muted-foreground)" : `oklch(0.7 0.14 ${hue})` }} className="size-4 rounded-full" />
+    const hue = CHART_HUE[value]
+    return <span style={{ background: hue === undefined ? "var(--muted-foreground)" : `oklch(0.7 0.15 ${hue})` }} className="size-4 shrink-0 rounded-full" />
   }
   if (option === "tint") {
     const tint = { neutral: "oklch(0.6 0 0)", cool: "oklch(0.6 0.05 262)", warm: "oklch(0.6 0.05 70)" }[value]
-    return <span style={{ background: tint }} className="size-4 rounded-full" />
+    return <span style={{ background: tint }} className="size-4 shrink-0 rounded-full" />
   }
   if (option === "mode") {
     return <span className={cn("size-4 rounded-full border border-foreground/30", value === "dark" ? "bg-[oklch(0.2_0_0)]" : "bg-[oklch(0.95_0_0)]")} />
@@ -76,10 +76,12 @@ function Picker({
           <Sign option={option} value={value} />
         </span>
       </DropdownMenuTrigger>
-      <DropdownMenuContent side="right" align="start" sideOffset={14} className="min-w-44">
+      <DropdownMenuContent side="right" align="start" sideOffset={14} className="max-h-(--available-height) min-w-44 overflow-y-auto">
         <DropdownMenuRadioGroup value={value} onValueChange={(next) => onChange(String(next))}>
           {choices.map((choice) => (
             <DropdownMenuRadioItem key={choice.value} value={choice.value}>
+              {/* a colour is easier to pick by looking at it than by its name */}
+              {(option === "chart" || option === "tint") && <Sign option={option} value={choice.value} />}
               <span style={option === "heading" || option === "font" ? { fontFamily: fontFamily(choice.value) } : undefined}>{choice.label}</span>
             </DropdownMenuRadioItem>
           ))}

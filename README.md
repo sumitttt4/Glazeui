@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/banner.png" alt="Solid Glass, by DeepLethe" width="820">
+<img src="docs/banner.png?v=3" alt="Solid Glass, by DeepLethe" width="820">
 
 </div>
 

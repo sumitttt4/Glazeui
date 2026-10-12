@@ -106,12 +106,12 @@ export function UsageCard() {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <ItemGroup className="gap-0">
+        <ItemGroup className="-mx-2.5 w-auto gap-0">
           {items.map((item) => (
             <Item
               key={item.name}
               size="xs"
-              className="px-0 group-hover/item-group:bg-transparent"
+              className="flex-nowrap"
               render={<a href="#" />}
             >
               <ItemMedia variant="icon" className="text-primary">

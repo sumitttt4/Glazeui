@@ -44,7 +44,7 @@ function GlassWordmark({ first, second }: { first: string; second: string }) {
 
 /**
  * Development only (/dev/banner): the banner at the top of the README, drawn with the theme itself so
- * it cannot drift from the material. It fills an 820 by 200 window; `docs/banner-2.png` is a
+ * it cannot drift from the material. It fills an 820 by 200 window; `docs/banner-3.webp` is a
  * screenshot of this page at twice that, with a clear background (the corners are see-through).
  *
  * On the left, the name, in glass, and who it is by. On the right, what it is for: three panes of the

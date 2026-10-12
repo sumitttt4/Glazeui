@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/banner-2.png" alt="Solid Glass, by DeepLethe" width="820">
+<img src="docs/banner-3.webp" alt="Solid Glass, by DeepLethe" width="820">
 
 </div>
 
@@ -33,16 +33,16 @@ shadcn/ui component in the material, plus a dozen components of Solid Glass's ow
 [Create](https://deeplethe.github.io/solid-glass/create) page the glass can be tuned (thinner, thicker,
 tinted, another radius, another face) and the result copied out as a few lines of CSS.
 
-![The components in the dark theme](docs/screenshots/home-dark.png)
+![The components in the dark theme](docs/screenshots/home-dark.webp)
 
-![The components in the light theme](docs/screenshots/home-light.png)
+![The components in the light theme](docs/screenshots/home-light.webp)
 
 It stands between flat design and liquid glass. Flat is an opaque block with no finish to speak of;
 liquid glass is nearly clear, and on a page with a lot of text the reader is always fighting the
 background for the words. Solid Glass lets only an outline through: enough to know it is glass, not
 enough to get in the way of reading.
 
-![One panel three ways: flat, Solid Glass, liquid glass](docs/screenshots/compare.png)
+![One panel three ways: flat, Solid Glass, liquid glass](docs/screenshots/compare.webp)
 
 ## Install
 
@@ -109,8 +109,9 @@ npm run build       # into dist/
 npm run typecheck
 ```
 
-`/dev/banner` (development only) is the banner above, drawn with the theme: `docs/banner-2.png` is a
-screenshot of it in an 820 by 200 window at twice the size. When the picture changes, save it under
+`/dev/banner` (development only) is the banner above, drawn with the theme: `docs/banner-3.webp` is a
+screenshot of it in an 820 by 200 window at twice the size, saved as WebP like the other pictures
+here (a quarter of the size of the same picture as PNG). When the picture changes, save it under
 the next number and point the README at that: GitHub serves a README's pictures from one address
 per file, whatever is added to the link, and a browser keeps what it fetched from it.
 

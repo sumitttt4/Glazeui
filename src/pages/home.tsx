@@ -14,10 +14,10 @@ export function Home() {
         <Link to="/docs/components/status-glyph" className={cn(badgeVariants({ variant: "secondary" }), "bg-muted")}>
           New Status Glyph component <ArrowRightIcon />
         </Link>
-        <PageHeaderHeading className="max-w-4xl">Texture you can feel. Clarity you can see.</PageHeaderHeading>
+        <PageHeaderHeading className="max-w-4xl">Form with substance.</PageHeaderHeading>
         <PageHeaderDescription>
-          Solid Glass is a theme for shadcn/ui: thick, smoky panes with the weight of a solid surface and the clarity of glass. Every
-          component you already use, in one material.
+          Thick, smoky panes with the weight of a solid surface and the clarity of glass. Every component you already use, in one
+          material.
         </PageHeaderDescription>
         <PageActions>
           <Link to="/docs/installation" className={cn(buttonVariants(), "h-[35px] px-3")}>

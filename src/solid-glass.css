@@ -664,7 +664,7 @@
   background-clip: padding-box;
   box-shadow: inset 0 1px 0 var(--glass-inner);
 }
-[data-slot="empty-icon"],
+[data-slot="empty-icon"][data-variant="icon"],
 [data-slot="empty-media"][data-variant="icon"] {
   box-shadow:
     inset 0 1px 0 var(--glass-control-rim),

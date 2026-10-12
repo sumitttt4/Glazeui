@@ -27,6 +27,13 @@ export function NoTeamMembers() {
               <AvatarGroup className="grayscale">
                 <Avatar size="lg">
                   <AvatarImage
+                    src="https://github.com/WaylandYang.png"
+                    alt="@WaylandYang"
+                  />
+                  <AvatarFallback>WY</AvatarFallback>
+                </Avatar>
+                <Avatar size="lg">
+                  <AvatarImage
                     src="https://github.com/shadcn.png"
                     alt="@shadcn"
                   />

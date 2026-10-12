@@ -1,14 +1,34 @@
+<div align="center">
+
+<img src="docs/screenshots/home-dark.png" alt="Solid Glass" width="820">
+
+</div>
+
 # Solid Glass
 
-A theme for [shadcn/ui](https://ui.shadcn.com): thick, smoky panes of glass that read as solid from
-a distance and as glass only close up. The finish is at the edges (a line of light along the top, a
-hairline all round, a shadow gathered underneath); the face is neutral grey, takes no colour from
-what is behind it, bends nothing and does not flow.
+<div align="center">
+
+[Install](#install) · [What is here](#what-is-here) · [Run](#run) · [Licence](#licence)
+
+[![Stars](https://img.shields.io/github/stars/WaylandYang/solid-glass?style=flat-square&label=STARS&labelColor=161B22&color=FFC220&logo=github&logoColor=FFFFFF)](https://github.com/WaylandYang/solid-glass/stargazers)
+[![License](https://img.shields.io/badge/LICENSE-MIT-3FB950?style=flat-square&labelColor=161B22)](LICENSE)
+[![shadcn/ui](https://img.shields.io/badge/BUILT%20ON-SHADCN%2FUI-F5F5F5?style=flat-square&labelColor=161B22&logo=shadcnui&logoColor=FFFFFF)](https://ui.shadcn.com)
+
+[![Official site](https://img.shields.io/badge/OFFICIAL-SOLID%20GLASS-FFFFFF?style=flat-square&labelColor=161B22&logo=safari&logoColor=FFFFFF)](https://waylandyang.github.io/solid-glass)
+[![Registry](https://img.shields.io/badge/REGISTRY-13%20ITEMS-8957E5?style=flat-square&labelColor=161B22)](https://waylandyang.github.io/solid-glass/r/registry.json)
+[![Tailwind CSS](https://img.shields.io/badge/TAILWIND%20CSS-4-06B6D4?style=flat-square&labelColor=161B22&logo=tailwindcss&logoColor=FFFFFF)](https://tailwindcss.com)
+[![React](https://img.shields.io/badge/REACT-19-61DAFB?style=flat-square&labelColor=161B22&logo=react&logoColor=FFFFFF)](https://react.dev)
+[![Built by WaylandYang](https://img.shields.io/badge/BUILT%20BY-WAYLANDYANG-2D333B?style=flat-square&labelColor=161B22)](https://github.com/WaylandYang)
+
+</div>
+
+**Form with substance.** A theme for [shadcn/ui](https://ui.shadcn.com): thick, smoky panes of glass
+that read as solid from a distance and as glass only close up. The finish is at the edges (a line of
+light along the top, a hairline all round, a shadow gathered underneath); the face is neutral grey,
+takes no colour from what is behind it, bends nothing and does not flow.
 
 **[waylandyang.github.io/solid-glass](https://waylandyang.github.io/solid-glass)** shows every
 shadcn/ui component in the material, plus a dozen components of Solid Glass's own.
-
-![The home page in the dark theme](docs/screenshots/home-dark.png)
 
 ![The home page in the light theme](docs/screenshots/home-light.png)
 

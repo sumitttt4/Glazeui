@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/banner-3.webp" alt="Solid Glass, by DeepLethe" width="820">
+<img src="docs/banner-4.webp" alt="Solid Glass: designed for enterprise AI, by DeepLethe" width="820">
 
 </div>
 
@@ -109,7 +109,7 @@ npm run build       # into dist/
 npm run typecheck
 ```
 
-`/dev/banner` (development only) is the banner above, drawn with the theme: `docs/banner-3.webp` is a
+`/dev/banner` (development only) is the banner above, drawn with the theme: `docs/banner-4.webp` is a
 screenshot of it in an 820 by 200 window at twice the size, saved as WebP like the other pictures
 here (a quarter of the size of the same picture as PNG). When the picture changes, save it under
 the next number and point the README at that: GitHub serves a README's pictures from one address

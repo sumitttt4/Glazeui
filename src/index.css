@@ -3,6 +3,7 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
 @import "@fontsource-variable/geist-mono";
+@import "@fontsource/marcellus-sc/latin-400.css";
 @import "./solid-glass.css";
 
 /* ---- The site -------------------------------------------------------------
@@ -38,6 +39,13 @@
 
 @utility container {
   @apply mx-auto max-w-[1400px] px-4 lg:px-8;
+}
+
+/* DeepLethe's own face, for its name wherever the site signs with it: Roman capitals as cut in
+   stone, the wordmark of deeplethe.com. */
+@utility font-logo {
+  font-family: "Marcellus SC", "Trajan Pro", Georgia, serif;
+  font-weight: 400;
 }
 
 @utility extend-touch-target {

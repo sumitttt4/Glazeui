@@ -5,7 +5,7 @@ export function SiteFooter() {
         <div className="flex h-(--footer-height) items-center justify-between">
           <div className="w-full px-1 text-center text-xs leading-loose text-muted-foreground sm:text-sm">
             By{" "}
-            <a href="https://deeplethe.com" target="_blank" rel="noreferrer" className="font-medium underline underline-offset-4">
+            <a href="https://deeplethe.com" target="_blank" rel="noreferrer" className="font-logo tracking-[0.12em] text-foreground underline-offset-4 hover:underline">
               DeepLethe
             </a>
             . Built on{" "}

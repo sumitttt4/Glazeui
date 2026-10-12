@@ -3,19 +3,22 @@ import * as React from "react"
 import { SolidGlassMark } from "@/site/logo"
 
 /**
- * The name, set in the material: each letter a pane of glass. A grey face, the line of light along
- * the top of every stroke, a hairline round it, a thin dark edge underneath and its shadow on the
- * page. No gradient; like a pane, a letter is finished at its edges.
+ * The name, set in the material: each letter a pane of glass. A face (darker for the first word,
+ * brighter for the second), the line of light along the top of every stroke, a hairline round it,
+ * a thin dark edge underneath and its shadow on the page. No gradient; like a pane, a letter is
+ * finished at its edges.
  */
-function GlassWordmark({ children }: { children: string }) {
+function GlassWordmark({ first, second }: { first: string; second: string }) {
   const id = React.useId()
-  const letters = (props: React.SVGProps<SVGTextElement>) => (
+  // Every layer is the same line of type. Only the face is told the two words apart.
+  const letters = (props: React.SVGProps<SVGTextElement>, face?: [string, string]) => (
     <text x="0" y="36" fontSize="40" fontWeight="600" letterSpacing="-2" {...props}>
-      {children}
+      <tspan fill={face?.[0]}>{first}</tspan>
+      <tspan fill={face?.[1]}> {second}</tspan>
     </text>
   )
   return (
-    <svg width="222" height="48" viewBox="0 0 222 48" role="img" aria-label={children} className="overflow-visible font-sans">
+    <svg width="222" height="48" viewBox="0 0 222 48" role="img" aria-label={`${first} ${second}`} className="overflow-visible font-sans">
       <defs>
         {/* What is left of the letters once the same letters, moved down a little, are taken out: their top edges. */}
         <mask id={`${id}rim`} maskUnits="userSpaceOnUse" x="-8" y="-8" width="240" height="64">
@@ -27,7 +30,8 @@ function GlassWordmark({ children }: { children: string }) {
         {letters({ fill: "#000", fillOpacity: 0.55 })}
       </g>
       <g transform="translate(0 1.1)">{letters({ fill: "oklch(0.3 0 0)" })}</g>
-      {letters({ fill: "oklch(0.7 0 0)" })}
+      {/* smoked glass for the first word, clear glass for the second: the name says which is which */}
+      {letters({}, ["oklch(0.62 0 0)", "oklch(0.9 0 0)"])}
       {letters({ fill: "none", stroke: "#fff", strokeOpacity: 0.16, strokeWidth: 0.7 })}
       <g mask={`url(#${id}rim)`}>{letters({ fill: "#fff", fillOpacity: 0.85 })}</g>
     </svg>
@@ -57,10 +61,10 @@ export function DevBanner() {
       <div className="flex flex-col gap-3">
         <div className="flex items-center gap-3.5">
           <SolidGlassMark className="size-11" />
-          <GlassWordmark>Solid Glass</GlassWordmark>
+          <GlassWordmark first="Solid" second="Glass" />
         </div>
         <p className="pl-0.5 text-[17px] text-muted-foreground">
-          by <span className="font-medium text-foreground/90">DeepLethe</span>
+          by <span className="ml-0.5 font-logo text-[18px] tracking-[0.14em] text-foreground/90">DeepLethe</span>
         </p>
       </div>
 

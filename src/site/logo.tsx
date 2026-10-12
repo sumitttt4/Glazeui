@@ -5,8 +5,9 @@ import { cn } from "@/lib/utils"
 /**
  * The mark, in two layers of Solid Glass. The first is a tile of smoked glass: a low fill, the line
  * of light along its top edge, a hairline round it and its shade underneath. The second lies on it:
- * a single angle, ›, a bright solid pane with its own lit edge, casting its own shadow on the tile.
- * No gradients — like the material, it is finished at the edges.
+ * a single angle, ›, itself a pane of clear glass: a bright face, the line of light along its top
+ * edges, a hairline round it, a thin dark edge underneath and its shadow on the tile. No gradients
+ * — like the material, it is finished at the edges.
  */
 export function SolidGlassMark({ className, ...props }: React.ComponentProps<"svg">) {
   const id = React.useId()
@@ -23,7 +24,7 @@ export function SolidGlassMark({ className, ...props }: React.ComponentProps<"sv
         </mask>
         <mask id={`${id}angle`} maskUnits="userSpaceOnUse" x="0" y="0" width="16" height="16">
           <path {...angle} stroke="#fff" />
-          <path {...angle} stroke="#000" transform="translate(0 0.5)" />
+          <path {...angle} stroke="#000" transform="translate(0 0.42)" />
         </mask>
       </defs>
 
@@ -33,10 +34,13 @@ export function SolidGlassMark({ className, ...props }: React.ComponentProps<"sv
       <rect x="1.3" y="1.3" width="13.4" height="13.4" rx="3.6" strokeWidth="0.6" className="stroke-[oklch(0.3_0.02_265/16%)] dark:stroke-white/10" />
       <rect {...tile} y="1" mask={`url(#${id}tile)`} className="fill-white dark:fill-white/45" />
 
-      {/* Second layer: the angle, a solid pane lying on the tile. Shadow, pane, lit edge. */}
-      <path {...angle} transform="translate(0 0.75)" className="stroke-[oklch(0.25_0.03_265/30%)] dark:stroke-black/50" />
-      <path {...angle} className="stroke-[oklch(0.22_0_0)] dark:stroke-[oklch(0.97_0_0)]" />
-      <path {...angle} mask={`url(#${id}angle)`} className="stroke-white/45 dark:stroke-white" />
+      {/* Second layer: the angle, a pane of clear glass lying on the tile. Shadow, the dark edge under
+          it, hairline, face, lit edge. */}
+      <path {...angle} transform="translate(0 0.85)" className="stroke-[oklch(0.25_0.03_265/30%)] dark:stroke-black/55" />
+      <path {...angle} transform="translate(0 0.3)" className="stroke-[oklch(0.1_0_0)] dark:stroke-[oklch(0.26_0_0)]" />
+      <path {...angle} strokeWidth={2.25} className="stroke-black/10 dark:stroke-white/20" />
+      <path {...angle} className="stroke-[oklch(0.24_0_0)] dark:stroke-[oklch(0.86_0_0)]" />
+      <path {...angle} mask={`url(#${id}angle)`} className="stroke-white/50 dark:stroke-white" />
     </svg>
   )
 }

@@ -1,0 +1,37 @@
+---
+title: Ask Card
+description: A decision the agent has put to the user, with its choices as buttons.
+group: agents
+---
+
+<ComponentPreview name="ask-card-demo" />
+
+## Installation
+
+<CodeTabs>
+
+```bash
+npx shadcn@latest add {origin}/r/ask-card.json
+```
+
+<ComponentSource name="ask-card" />
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { AskCard } from "@/components/ui/ask-card"
+```
+
+```tsx
+<AskCard
+  question="Raise the timeout and rerun, or leave them out?"
+  options={["Raise and rerun", "Leave out"]}
+  onAnswer={send}
+/>
+```
+
+## After the answer
+
+Once the conversation has moved on, leave `onAnswer` out. The choices are then no longer offered, and the card stays as a record of what was asked.

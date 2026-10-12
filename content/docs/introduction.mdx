@@ -1,0 +1,34 @@
+---
+title: Introduction
+description: Solid Glass is a theme for shadcn/ui. Thick, smoky glass that reads as solid from a distance, and as glass only close up.
+order: 1
+---
+
+Solid Glass stands between flat design and liquid glass. Every surface is a thick pane of smoky glass with very little see-through. What makes it glass is at its edges: a line of light along the top, a hairline all round, a shadow gathered underneath. The face itself is neutral grey. It takes no colour from what is behind it, bends nothing and does not flow.
+
+**Texture you can feel. Clarity you can see.**
+
+## Where it stands
+
+One panel three ways, each over the same two patches of light. Change the colour of the light to see what each material does with what is behind it.
+
+<Widget name="Compare" />
+
+Flat is an opaque block: whatever is behind it makes no difference, and there is no finish to speak of. Liquid glass is nearly clear: all the colour behind comes through, and on a page with a lot of text the reader is always fighting the background for the words. Solid Glass lets only an outline through. Enough to know it is glass, not enough to get in the way of reading.
+
+## Four rules
+
+- **The finish is at the edge.** A rim of light, a hairline and a shadow. Never a gradient or a highlight across the face.
+- **Heavy, not airy.** Neutral grey. The blur softens what is behind a pane without boosting its colour.
+- **Depth is thickness.** Panels are thinnest, cards in between, anything that floats is thickest. Thicker is more opaque, so text behind a menu does not show through it.
+- **One state.** Hovered, chosen and held open all wear the same small pane of clear glass, so "this one" reads the same in a sidebar, in a menu and on a tab.
+
+## What is here
+
+A stylesheet, and components.
+
+The stylesheet is the material. It uses the names shadcn/ui already uses (`--background`, `--card`, `--popover`, `--muted`), so every shadcn/ui component takes the material by using the colour it already used. Nothing in `components/ui` has to change. Every page under [Components](/docs/components) is the stock shadcn/ui component, shown in Solid Glass.
+
+On top of that are a dozen components of Solid Glass's own, for interfaces where an agent works while someone watches: a [composer](/docs/components/composer), the [status line](/docs/components/turn-status) a turn ends on, [tool calls](/docs/components/tool-steps), [diffs](/docs/components/diff-view), and the three points of light that say what the agent is [thinking](/docs/components/status-glyph).
+
+Next: [Installation](/docs/installation), or how the [material](/docs/material) is made.

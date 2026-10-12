@@ -1,0 +1,34 @@
+---
+title: Panel
+description: The thinnest pane of glass, with a title bar: what a page is laid out in.
+---
+
+<ComponentPreview name="panel-demo" />
+
+## Installation
+
+<CodeTabs>
+
+```bash
+npx shadcn@latest add {origin}/r/panel.json
+```
+
+```bash
+npm install lucide-react
+```
+
+<ComponentSource name="panel" />
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Panel, PanelRow } from "@/components/ui/panel"
+```
+
+```tsx
+<Panel title="Files" onClose={close}>
+  <PanelRow chosen>sources.md</PanelRow>
+</Panel>
+```

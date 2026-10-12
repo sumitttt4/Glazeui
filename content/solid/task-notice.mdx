@@ -1,0 +1,31 @@
+---
+title: Task Notice
+description: News of something ending behind the conversation: a dot for how it went, a line for what it was.
+group: agents
+---
+
+<ComponentPreview name="task-notice-demo" />
+
+## Installation
+
+<CodeTabs>
+
+```bash
+npx shadcn@latest add {origin}/r/task-notice.json
+```
+
+<ComponentSource name="task-notice" />
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { TaskNotice } from "@/components/ui/task-notice"
+```
+
+```tsx
+<TaskNotice
+  notices={[{ id: "1", title: "Background reading finished", status: "completed", note: "ran 18s" }]}
+/>
+```

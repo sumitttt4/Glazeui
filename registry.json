@@ -1,0 +1,213 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "solid-glass",
+  "homepage": "https://waylandyang.github.io/solid-glass",
+  "items": [
+    {
+      "name": "solid-glass",
+      "type": "registry:file",
+      "title": "Solid Glass",
+      "description": "The stylesheet: the whole material in one file. Thick, smoky glass for every shadcn/ui component you already have.",
+      "files": [
+        {
+          "path": "src/solid-glass.css",
+          "type": "registry:file",
+          "target": "src/solid-glass.css"
+        }
+      ]
+    },
+    {
+      "name": "ask-card",
+      "type": "registry:ui",
+      "title": "Ask Card",
+      "description": "A decision the agent has put to the user, with its choices as buttons.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/ask-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "composer",
+      "type": "registry:ui",
+      "title": "Composer",
+      "description": "Where a message is written: a pane of glass holding its tags, its text and the mark that sends it.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/composer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "context-ring",
+      "type": "registry:ui",
+      "title": "Context Ring",
+      "description": "How full the context window is, as a ring. Opened, the numbers and what it is full of.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/context-ring.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "diff-view",
+      "type": "registry:ui",
+      "title": "Diff View",
+      "description": "A patch as a diff: added and removed lines coloured, file headers dropped.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/diff-view.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dot-loader",
+      "type": "registry:ui",
+      "title": "Dot Loader",
+      "description": "Three dots flashing in turn: the smallest sign that something is still running.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/dot-loader.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "panel",
+      "type": "registry:ui",
+      "title": "Panel",
+      "description": "The thinnest pane of glass, with a title bar: what a page is laid out in.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/panel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "reasoning",
+      "type": "registry:ui",
+      "title": "Reasoning",
+      "description": "The model's thinking, folded away by default.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/reasoning.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "status-glyph",
+      "type": "registry:ui",
+      "title": "Status Glyph",
+      "description": "Three points of light that say a turn is going, and what it is doing.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/status-glyph.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "type": "registry:ui",
+      "title": "Tag",
+      "description": "Something attached to what is being written. While it uploads, the tag is its own progress bar.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/tag.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "task-notice",
+      "type": "registry:ui",
+      "title": "Task Notice",
+      "description": "News of something ending behind the conversation: a dot for how it went, a line for what it was.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/task-notice.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tool-steps",
+      "type": "registry:ui",
+      "title": "Tool Steps",
+      "description": "A run of tool calls folded into one line, which opens to what each one did.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://waylandyang.github.io/solid-glass/r/diff-view.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/tool-steps.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "turn-status",
+      "type": "registry:ui",
+      "title": "Turn Status",
+      "description": "The line a turn ends on for as long as it is going: what it is doing, for how long, and how much it has written.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://waylandyang.github.io/solid-glass/r/status-glyph.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/turn-status.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}

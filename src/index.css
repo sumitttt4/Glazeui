@@ -1,0 +1,52 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
+@import "./solid-glass.css";
+
+/* ---- The site -------------------------------------------------------------
+   What follows is the documentation site's own, not part of the theme. */
+
+@theme inline {
+  --color-code: var(--code);
+  --color-surface: var(--surface);
+  --breakpoint-3xl: 1600px;
+}
+
+:root {
+  --code: oklch(0.55 0.012 265 / 6%);
+  --surface: oklch(0.55 0.012 265 / 5%);
+  --header-height: calc(var(--spacing) * 14);
+  --footer-height: calc(var(--spacing) * 14);
+}
+
+.dark {
+  --code: oklch(1 0 0 / 3.5%);
+  --surface: oklch(1 0 0 / 3%);
+}
+
+@layer base {
+  html {
+    scrollbar-gutter: stable;
+  }
+}
+
+@utility container-wrapper {
+  @apply mx-auto w-full max-w-[1800px];
+}
+
+@utility container {
+  @apply mx-auto max-w-[1400px] px-4 lg:px-8;
+}
+
+@utility extend-touch-target {
+  @media (pointer: coarse) {
+    @apply relative touch-manipulation after:absolute after:-inset-2;
+  }
+}
+
+/* The stylesheet's own code colours, on whatever highlight.js marked up. */
+.md-code {
+  tab-size: 2;
+}

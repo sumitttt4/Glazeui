@@ -1,0 +1,33 @@
+---
+title: Reasoning
+description: The model's thinking, folded away by default.
+group: agents
+---
+
+<ComponentPreview name="reasoning-demo" />
+
+## Installation
+
+<CodeTabs>
+
+```bash
+npx shadcn@latest add {origin}/r/reasoning.json
+```
+
+```bash
+npm install lucide-react
+```
+
+<ComponentSource name="reasoning" />
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Reasoning } from "@/components/ui/reasoning"
+```
+
+```tsx
+<Reasoning thinking={turn.pending}>{turn.reasoning}</Reasoning>
+```

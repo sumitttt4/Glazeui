@@ -1,0 +1,29 @@
+---
+title: Diff View
+description: A patch as a diff: added and removed lines coloured, file headers dropped.
+group: agents
+---
+
+<ComponentPreview name="diff-view-demo" />
+
+## Installation
+
+<CodeTabs>
+
+```bash
+npx shadcn@latest add {origin}/r/diff-view.json
+```
+
+<ComponentSource name="diff-view" />
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { DiffView } from "@/components/ui/diff-view"
+```
+
+```tsx
+<DiffView patch={patch} />
+```

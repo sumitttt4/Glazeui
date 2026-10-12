@@ -1,0 +1,64 @@
+---
+title: Status Glyph
+description: Three points of light that say a turn is going, and what it is doing.
+---
+
+<ComponentPreview name="status-glyph-demo" />
+
+## Installation
+
+<CodeTabs>
+
+```bash
+npx shadcn@latest add {origin}/r/status-glyph.json
+```
+
+<ComponentSource name="status-glyph" />
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { StatusGlyph } from "@/components/ui/status-glyph"
+```
+
+```tsx
+<StatusGlyph activity="searching" />
+```
+
+## Activities
+
+There are five kinds of work, and a way of moving for each. The points are always the same three; what changes is the figure they make. When the work changes, the points travel from wherever they are to their places in the new figure instead of jumping there.
+
+| Activity | What the points do |
+| --- | --- |
+| `thinking` | Circle one another, turning the question over. |
+| `searching` | Set out from the middle toward the corners, fading as they go. |
+| `running` | Go round a square, one behind the other. |
+| `writing` | Lift in turn, then a light runs along the row. |
+| `compacting` | Fall into the middle, become one, and spring apart. |
+
+## Figures
+
+A state that lasts minutes is not minutes of one motion: an activity takes several figures in turn, holding each for a few seconds and then turning into the next. `STATUS_FIGURES` lists every figure on its own, and the `figure` prop plays just one.
+
+<ComponentPreview name="status-glyph-figures" previewClassName="h-96" />
+
+## Inline
+
+The glyph is 16px by default and takes the colour of the text it sits in.
+
+<ComponentPreview name="status-glyph-inline" />
+
+## Reduced motion
+
+When the reader's system asks for less motion, the points hold each figure's opening pose. Put words beside the glyph, as [Turn Status](/docs/components/turn-status) does, so the state is still said.
+
+## API Reference
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `activity` | `"thinking" \| "searching" \| "running" \| "writing" \| "compacting"` | `"thinking"` |
+| `figure` | `Figure` | - |
+| `className` | `string` | - |

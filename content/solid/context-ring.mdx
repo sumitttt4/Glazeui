@@ -1,0 +1,37 @@
+---
+title: Context Ring
+description: How full the context window is, as a ring. Opened, the numbers and what it is full of.
+group: agents
+---
+
+<ComponentPreview name="context-ring-demo" />
+
+## Installation
+
+<CodeTabs>
+
+```bash
+npx shadcn@latest add {origin}/r/context-ring.json
+```
+
+```bash
+npm install lucide-react
+```
+
+<ComponentSource name="context-ring" />
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { ContextRing } from "@/components/ui/context-ring"
+```
+
+```tsx
+<ContextRing used={86300} window={200000} />
+```
+
+## Colour
+
+Blue while there is room, which is nearly always. Amber from 70%, and the colour of failure from 90%: nearly full is worth a second look.

@@ -1,0 +1,59 @@
+---
+title: Composer
+description: Where a message is written: a pane of glass holding its tags, its text and the mark that sends it.
+group: agents
+---
+
+<ComponentPreview name="composer-demo" />
+
+## Installation
+
+<CodeTabs>
+
+```bash
+npx shadcn@latest add {origin}/r/composer.json
+```
+
+```bash
+npm install lucide-react
+```
+
+<ComponentSource name="composer" />
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Composer } from "@/components/ui/composer"
+```
+
+```tsx
+const [text, setText] = React.useState("")
+
+<Composer value={text} onValueChange={setText} onSubmit={send} />
+```
+
+## While a turn runs
+
+The send mark has no block behind it in any state: its brightness says what it will do. With `running`, it is the quiet square that stops the turn, until something is typed, which is then sent behind it.
+
+<ComponentPreview name="composer-running" />
+
+## Footer
+
+`ComposerFooter` is the line under the composer, not in it: settings for the message, not part of what is being written. `ComposerPick` is a choice among a few, shown as its current value and held lit while its menu is open.
+
+## API Reference
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | - |
+| `onValueChange` | `(value: string) => void` | - |
+| `onSubmit` | `(value: string) => void` | - |
+| `onStop` | `() => void` | - |
+| `running` | `boolean` | `false` |
+| `leading` | `ReactNode` | - |
+| `tags` | `ReactNode` | - |
+| `above` | `ReactNode` | - |
+| `onBackspaceAtStart` | `() => boolean` | - |

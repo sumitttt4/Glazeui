@@ -1,0 +1,61 @@
+---
+title: Turn Status
+description: The line a turn ends on for as long as it is going: what it is doing, for how long, and how much it has written.
+group: agents
+---
+
+<ComponentPreview name="turn-status-demo" />
+
+## Installation
+
+<CodeTabs>
+
+```bash
+npx shadcn@latest add {origin}/r/turn-status.json
+```
+
+```bash
+npm install lucide-react
+```
+
+<ComponentSource name="turn-status" />
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { TurnStatus } from "@/components/ui/turn-status"
+```
+
+```tsx
+<TurnStatus
+  activity="running"
+  label="Running python rerun.py"
+  since={turn.startedAt}
+  tokens={turn.outputTokens}
+/>
+```
+
+## With steps
+
+Given children, the line is a button and opens to show them: the calls of the step in hand.
+
+<ComponentPreview name="turn-status-steps" align="start" />
+
+## Waiting
+
+Until the model has sent anything there is no step to name and nothing to count, but the clock starts with the message: it is what shows the wait is being timed, not ignored. Nothing is said of the time until there is a second of it.
+
+<ComponentPreview name="turn-status-waiting" />
+
+## API Reference
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `activity` | `Activity` | `"thinking"` |
+| `label` | `string` | - |
+| `since` | `number` | - |
+| `tokens` | `number` | `0` |
+| `trailing` | `ReactNode` | - |
+| `children` | `ReactNode` | - |

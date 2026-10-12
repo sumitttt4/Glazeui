@@ -1,0 +1,58 @@
+---
+title: Tool Steps
+description: A run of tool calls folded into one line, which opens to what each one did.
+group: agents
+---
+
+<ComponentPreview name="tool-steps-demo" />
+
+## Installation
+
+<CodeTabs>
+
+```bash
+npx shadcn@latest add {origin}/r/tool-steps.json
+```
+
+```bash
+npm install lucide-react
+```
+
+<ComponentSource name="tool-steps" />
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { StepGroup, type Step } from "@/components/ui/tool-steps"
+```
+
+```tsx
+const steps: Step[] = [
+  { id: "1", label: "Read search.py", status: "done" },
+  { id: "2", label: "Ran pytest", status: "done", output: "12 passed" },
+]
+
+<StepGroup steps={steps} />
+```
+
+## List
+
+`StepList` is the opened list on its own. A row opens to the call itself, or to its diff when it changed a file.
+
+<ComponentPreview name="tool-steps-list" align="start" />
+
+## API Reference
+
+A `Step` is said as what it did, "Read search.py", and not as a tool's name and its arguments.
+
+| Field | Type |
+| --- | --- |
+| `id` | `string` |
+| `label` | `string` |
+| `status` | `"running" \| "done" \| "error"` |
+| `detail` | `string` |
+| `output` | `string` |
+| `error` | `string` |
+| `patch` | `string` |

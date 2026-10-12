@@ -1,0 +1,71 @@
+---
+title: Installation
+description: Add the stylesheet to a shadcn/ui project, then add components as you need them.
+order: 2
+---
+
+## Start with shadcn/ui
+
+Solid Glass is a theme for shadcn/ui, so it starts from a shadcn/ui project: React 19, Tailwind CSS 4, and the Base UI flavour of the components. If you do not have one yet:
+
+```bash
+npx shadcn@latest init
+```
+
+## Add the stylesheet
+
+The whole material is one file. Put it beside your own styles:
+
+```bash
+npx shadcn@latest add {origin}/r/solid-glass.json
+```
+
+Then import it after Tailwind and shadcn's stylesheet, and delete the `:root` and `.dark` colour variables that `shadcn init` wrote. Solid Glass defines the same names.
+
+```css title="src/index.css"
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "./solid-glass.css";
+```
+
+Dark is the material as designed. It follows the `dark` class on `<html>`. A project made by `shadcn init` has a `ThemeProvider` that sets that class from the system's setting; to start in dark whatever the system says:
+
+```tsx title="src/main.tsx"
+<ThemeProvider defaultTheme="dark">
+```
+
+Without a provider, put the class on the element yourself:
+
+```tsx title="index.html"
+<html lang="en" class="dark">
+```
+
+That's it. Every shadcn/ui component you already have is now Solid Glass, as shadcn/ui wrote it: the stylesheet finds each part by the `data-slot` and the classes it already carries, so there is nothing to edit and nothing to re-install.
+
+## Add components
+
+Stock components are installed the usual way, from shadcn/ui:
+
+```bash
+npx shadcn@latest add button
+```
+
+Solid Glass's own components are installed with the same command, from this site:
+
+```bash
+npx shadcn@latest add {origin}/r/status-glyph.json
+```
+
+## Fonts
+
+The stylesheet sets `--font-sans` to Geist and `--font-mono` to Geist Mono, and falls back to the system's. To use them, add the font files yourself:
+
+```bash
+npm install @fontsource-variable/geist @fontsource-variable/geist-mono
+```
+
+```css title="src/index.css"
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
+```

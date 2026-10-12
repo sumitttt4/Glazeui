@@ -1,0 +1,36 @@
+---
+title: Tag
+description: Something attached to what is being written. While it uploads, the tag is its own progress bar.
+---
+
+<ComponentPreview name="tag-demo" />
+
+## Installation
+
+<CodeTabs>
+
+```bash
+npx shadcn@latest add {origin}/r/tag.json
+```
+
+```bash
+npm install lucide-react
+```
+
+<ComponentSource name="tag" />
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Tag } from "@/components/ui/tag"
+```
+
+```tsx
+<Tag icon={<PaperclipIcon />} onRemove={remove}>results.csv</Tag>
+```
+
+## States
+
+`progress` between 0 and 1 fills the tag from the left. `error` turns it to the colour of failure and says why on hover. `armed` is the same pane lit a step brighter, for the tag the next Backspace will remove.

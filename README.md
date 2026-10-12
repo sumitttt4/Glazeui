@@ -28,7 +28,9 @@ light along the top, a hairline all round, a shadow gathered underneath); the fa
 takes no colour from what is behind it, bends nothing and does not flow.
 
 **[deeplethe.github.io/solid-glass](https://deeplethe.github.io/solid-glass)** shows every
-shadcn/ui component in the material, plus a dozen components of Solid Glass's own.
+shadcn/ui component in the material, plus a dozen components of Solid Glass's own. On its
+[Create](https://deeplethe.github.io/solid-glass/create) page the glass can be tuned (thinner, thicker,
+tinted, another radius, another face) and the result copied out as a few lines of CSS.
 
 ![The components in the dark theme](docs/screenshots/home-dark.png)
 
@@ -91,6 +93,7 @@ npx shadcn@latest add https://deeplethe.github.io/solid-glass/r/status-glyph.jso
 | `src/solid-glass.css` | The theme. The whole material in one file: colours, the three thicknesses of glass, the one state, motion. It defines shadcn/ui's own variable names. |
 | `registry.json` | The registry: what `shadcn add` installs from. Written by `scripts/build-registry.mjs`, which also builds `public/r/` for the site. |
 | `src/components/ui/` | The components the site shows. shadcn/ui's (Base UI, `base-nova`), installed with its command line, and Solid Glass's own. A few of shadcn/ui's (`button`, `input`, `tabs`, `dialog`, `dropdown-menu`, `sheet`, `sidebar` and some form controls) differ from stock in small ways; the stylesheet does not depend on those differences. |
+| `src/create/`, `src/pages/create.tsx` | The Create page: the material with its dials out (thickness, tint, chart colour, type, radius, rim, blur), a preview that takes each choice as it is made, and the few lines of CSS that come of it. `options.ts` says what each choice does to the stylesheet's variables; the preview cards are shadcn/ui's. |
 | `src/examples/` | One small file per example, as on ui.shadcn.com: shadcn/ui's own examples, and Solid Glass's for its own components. |
 | `content/` | The documentation. `components/` is shadcn/ui's page for each component; `solid/` and `docs/` are Solid Glass's. |
 | `src/site/`, `src/pages/`, `src/home/` | The site: header, sidebar, component preview, and the wall of cards on the home page. |

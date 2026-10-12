@@ -25,6 +25,7 @@ const NAV = [
   { href: "/docs/components", label: "Components" },
   { href: "/docs/material", label: "Material" },
   { href: "/docs/components/status-glyph", label: "Thinking" },
+  { href: "/create", label: "Create" },
 ]
 
 function MainNav({ className }: { className?: string }) {

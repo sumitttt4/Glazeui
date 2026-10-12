@@ -11,6 +11,9 @@ import { ComponentsIndex, DocPage, DocsLayout } from "@/site/docs"
 import { SiteFooter } from "@/site/site-footer"
 import { SiteHeader } from "@/site/site-header"
 
+// The preview on the Create page is a few dozen cards and every icon by name: fetched when the page is.
+const Create = React.lazy(() => import("@/pages/create"))
+
 /** A new page starts at its top, unless the link was to a place on it. */
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
@@ -33,6 +36,14 @@ export function App() {
         <main className="flex min-h-0 flex-1 flex-col">
           <Routes>
             <Route index element={<Home />} />
+            <Route
+              path="create"
+              element={
+                <React.Suspense fallback={null}>
+                  <Create />
+                </React.Suspense>
+              }
+            />
             <Route path="docs" element={<DocsLayout />}>
               <Route index element={<DocPage section="docs" />} />
               <Route path="components" element={<ComponentsIndex />} />
@@ -43,7 +54,7 @@ export function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
-        <SiteFooter />
+        {pathname !== "/create" && <SiteFooter />}
       </div>
       <Toaster />
       <ToastToaster />

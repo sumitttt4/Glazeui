@@ -7,6 +7,9 @@ it, at commit `02cad61166c4c20edbc8a3f71bd720eed4c1f49b`, and are released under
   own, listed in `README.md`).
 - `src/examples/`: its examples (`apps/v4/examples/base`), with import paths changed.
 - `content/components/`: its documentation for each component (`apps/v4/content/docs/components/base`).
+- `src/create/cards/` and `src/create/blocks.tsx`: the preview its Create page shows
+  (`apps/v4/registry/bases/base/blocks/preview`), at commit `993eb2c3151997ce08a49635c10fd8c8ef3713c7`, with import paths changed.
+  The Create page itself (`src/pages/create.tsx`, `src/create/customizer.tsx`) is laid out after its.
 - The layout of the site in `src/site/` follows its documentation site.
 
 > MIT License

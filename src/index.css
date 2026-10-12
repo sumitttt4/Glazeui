@@ -50,3 +50,9 @@
 .md-code {
   tab-size: 2;
 }
+
+/* On the Create page a heading can be set in a face of its own; shadcn/ui's preview cards ask for
+   it by this name. */
+.cn-font-heading {
+  font-family: var(--create-heading, inherit);
+}

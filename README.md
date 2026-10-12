@@ -93,7 +93,7 @@ npx shadcn@latest add https://deeplethe.github.io/solid-glass/r/status-glyph.jso
 | `src/components/ui/` | The components the site shows. shadcn/ui's (Base UI, `base-nova`), installed with its command line, and Solid Glass's own. A few of shadcn/ui's (`button`, `input`, `tabs`, `dialog`, `dropdown-menu`, `sheet`, `sidebar` and some form controls) differ from stock in small ways; the stylesheet does not depend on those differences. |
 | `src/examples/` | One small file per example, as on ui.shadcn.com: shadcn/ui's own examples, and Solid Glass's for its own components. |
 | `content/` | The documentation. `components/` is shadcn/ui's page for each component; `solid/` and `docs/` are Solid Glass's. |
-| `src/site/`, `src/pages/`, `src/home/` | The site: header, sidebar, component preview, and the wall of cards on the home page. |
+| `src/site/`, `src/pages/`, `src/home/` | The site: header, sidebar, component preview, and the home page: the headline beside a few cards, where the material stands, its four rules, and a wall of cards. |
 | `scripts/build-docs.mjs` | Turns `content/` into `src/docs/generated.json`, which the site renders. |
 
 ## Run

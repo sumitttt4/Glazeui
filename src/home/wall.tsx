@@ -592,35 +592,50 @@ function Message() {
   )
 }
 
-export function Wall() {
-  const column = "min-w-0 flex-col gap-(--gap)"
+/** Beside the headline: a few of the cards, in two columns that do not line up, fading out below. */
+export function HeroStage() {
+  const column = "min-w-0 flex-col gap-6 *:shrink-0"
   return (
-    <div data-slot="demo" className="relative w-full overflow-hidden p-6 pb-0 [--gap:--spacing(6)] xl:[--gap:--spacing(7)]">
-      <div className="relative z-10 mx-auto grid max-h-[1240px] w-full grid-cols-[minmax(0,1fr)] gap-x-(--gap) md:max-w-3xl md:grid-cols-2 lg:max-w-none lg:grid-cols-3 min-[1400px]:grid-cols-4! xl:max-w-[1600px]">
-        <div className={cn(column, "flex")}>
-          <Elements />
-          <Navigation />
-          <Status />
-          <Notifications />
-        </div>
-        <div className={cn(column, "hidden md:flex")}>
-          <Activity />
-          <CreateProject />
-          <Storage />
-        </div>
-        <div className={cn(column, "hidden lg:flex")}>
-          <Palette />
-          <Members />
-          <Account />
-          <Confirm />
-        </div>
-        <div className={cn(column, "hidden min-[1400px]:flex")}>
-          <Message />
-          <Invoices />
-          <Files />
-        </div>
+    <div
+      data-slot="demo"
+      className="-m-6 grid max-h-[620px] grid-cols-[minmax(0,1fr)] gap-6 overflow-hidden p-6 [mask-image:linear-gradient(to_bottom,black_calc(100%-7rem),transparent)] sm:grid-cols-2"
+    >
+      <div className={cn(column, "flex")}>
+        <Elements />
+        <Message />
       </div>
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-48 bg-linear-to-t from-background via-background/80 to-transparent" />
+      <div className={cn(column, "hidden pt-12 sm:flex")}>
+        <Activity />
+        <Palette />
+      </div>
+    </div>
+  )
+}
+
+/** The rest of the cards, as a wall: what an application is made of, in the material. */
+export function Wall() {
+  const column = "min-w-0 flex-col gap-6 *:shrink-0"
+  return (
+    <div
+      data-slot="demo"
+      className="-m-6 grid max-h-[760px] grid-cols-[minmax(0,1fr)] gap-6 overflow-hidden p-6 [mask-image:linear-gradient(to_bottom,black_calc(100%-8rem),transparent)] md:grid-cols-2 xl:grid-cols-3"
+    >
+      <div className={cn(column, "flex")}>
+        <Navigation />
+        <Status />
+        <Notifications />
+      </div>
+      <div className={cn(column, "hidden md:flex")}>
+        <CreateProject />
+        <Storage />
+        <Confirm />
+      </div>
+      <div className={cn(column, "hidden xl:flex")}>
+        <Members />
+        <Account />
+        <Invoices />
+        <Files />
+      </div>
     </div>
   )
 }

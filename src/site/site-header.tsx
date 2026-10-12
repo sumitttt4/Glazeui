@@ -23,13 +23,22 @@ import { useTheme } from "@/site/theme"
 const NAV = [
   { href: "/docs", label: "Docs" },
   { href: "/docs/components", label: "Components" },
+  { href: "/blocks", label: "Blocks" },
   { href: "/docs/material", label: "Material" },
-  { href: "/docs/components/status-glyph", label: "Thinking" },
   { href: "/create", label: "Create" },
 ]
 
+/**
+ * Which tab the page belongs to: the one whose address it is, or is under. Where two are (a
+ * component's page is under Docs and under Components), the nearer one, which is the longer address.
+ */
+function tabOf(pathname: string) {
+  return NAV.filter((item) => pathname === item.href || pathname.startsWith(`${item.href}/`)).sort((a, b) => b.href.length - a.href.length)[0]?.href
+}
+
 function MainNav({ className }: { className?: string }) {
   const { pathname } = useLocation()
+  const tab = tabOf(pathname)
   return (
     <nav className={cn("items-center gap-0", className)}>
       {/* the mark stands still: one that never stops moving reads as a page that shakes */}
@@ -41,10 +50,13 @@ function MainNav({ className }: { className?: string }) {
         <Link
           key={item.href}
           to={item.href}
-          data-active={pathname === item.href}
+          data-active={tab === item.href}
+          aria-current={tab === item.href ? "page" : undefined}
           className={cn(
             buttonVariants({ variant: "ghost", size: "sm" }),
-            "hidden h-8 px-2.5 text-sm text-foreground/80 data-[active=true]:text-foreground lg:inline-flex"
+            // the tab you are on wears the one state, like the chosen row of any list
+            "hidden h-8 px-2.5 text-sm text-foreground/70 lg:inline-flex",
+            tab === item.href && "glass-chosen text-foreground"
           )}
         >
           {item.label}

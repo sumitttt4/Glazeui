@@ -10,6 +10,11 @@ it, at commit `02cad61166c4c20edbc8a3f71bd720eed4c1f49b`, and are released under
 - `src/create/cards/` and `src/create/blocks.tsx`: the preview its Create page shows
   (`apps/v4/registry/bases/base/blocks/preview`), at commit `993eb2c3151997ce08a49635c10fd8c8ef3713c7`, with import paths changed.
   The Create page itself (`src/pages/create.tsx`, `src/create/customizer.tsx`) is laid out after its.
+- `src/blocks/<name>/` (the blocks in folders: `dashboard-01`, `sidebar-07`, `login-03`, `login-04`,
+  `signup-03`): its blocks (`apps/v4/registry/bases/base/blocks`), at commit
+  `993eb2c3151997ce08a49635c10fd8c8ef3713c7`, with import paths changed and each icon written as the
+  Lucide icon it names, as its own build writes them. `public/placeholder.svg` is its too. The Blocks
+  page (`src/pages/blocks.tsx`) is laid out after its.
 - The layout of the site in `src/site/` follows its documentation site.
 
 > MIT License

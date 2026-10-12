@@ -12,6 +12,7 @@
 
 [![Stars](https://img.shields.io/github/stars/deeplethe/solid-glass?style=flat-square&label=STARS&labelColor=161B22&color=FFC220&logo=github&logoColor=FFFFFF)](https://github.com/deeplethe/solid-glass/stargazers)
 [![License](https://img.shields.io/badge/LICENSE-MIT-3FB950?style=flat-square&labelColor=161B22)](LICENSE)
+[![For AI applications](https://img.shields.io/badge/DESIGNED%20FOR-AI%20APPLICATIONS-8957E5?style=flat-square&labelColor=161B22)](https://deeplethe.github.io/solid-glass/docs/components/status-glyph)
 [![shadcn/ui](https://img.shields.io/badge/BUILT%20ON-SHADCN%2FUI-F5F5F5?style=flat-square&labelColor=161B22&logo=shadcnui&logoColor=FFFFFF)](https://ui.shadcn.com)
 
 [![Official site](https://img.shields.io/badge/OFFICIAL-SOLID%20GLASS-FFFFFF?style=flat-square&labelColor=161B22&logo=safari&logoColor=FFFFFF)](https://deeplethe.github.io/solid-glass)
@@ -31,6 +32,11 @@ takes no colour from what is behind it, bends nothing and does not flow.
 seventy components in the material, among them a set made for interfaces where an agent works. On its
 [Create](https://deeplethe.github.io/solid-glass/create) page the glass can be tuned (thinner, thicker,
 tinted, another radius, another face) and the result copied out as a few lines of CSS.
+
+[![An agent workspace made of it: sessions, the thread, files and background tasks](docs/screenshots/agent-workspace.webp)](https://deeplethe.github.io/solid-glass/blocks)
+
+That is one of the [blocks](https://deeplethe.github.io/solid-glass/blocks): whole screens made of the
+components, to look at, read and copy in. Below, the components themselves.
 
 ![The components in the dark theme](docs/screenshots/home-dark.webp)
 
@@ -94,6 +100,7 @@ npx shadcn@latest add https://deeplethe.github.io/solid-glass/r/status-glyph.jso
 | `registry.json` | The registry: what `shadcn add` installs from. Written by `scripts/build-registry.mjs`, which also builds `public/r/` for the site. |
 | `src/components/ui/` | The components the site shows. shadcn/ui's (Base UI, `base-nova`), installed with its command line, and Solid Glass's own. A few of shadcn/ui's (`button`, `input`, `tabs`, `dialog`, `dropdown-menu`, `sheet`, `sidebar` and some form controls) differ from stock in small ways; the stylesheet does not depend on those differences. |
 | `src/create/`, `src/pages/create.tsx` | The Create page: the material with its dials out (thickness, tint, chart colour, type, radius, rim, blur), a preview that takes each choice as it is made, and the few lines of CSS that come of it. `options.ts` says what each choice does to the stylesheet's variables; the preview cards are shadcn/ui's. |
+| `src/blocks/`, `src/pages/blocks.tsx` | Blocks: whole screens made of the components, shown on the Blocks page in a frame of their own (`/view/<name>`). The single files at the top of the folder are Solid Glass's own (`agent-workspace`) and are in its registry; the folders are shadcn/ui's blocks in the material, installed from shadcn/ui. |
 | `src/examples/` | One small file per example, as on ui.shadcn.com: shadcn/ui's own examples, and Solid Glass's for its own components. |
 | `content/` | The documentation. `components/` is shadcn/ui's page for each component; `solid/` and `docs/` are Solid Glass's. |
 | `src/site/`, `src/pages/`, `src/home/` | The site: header, sidebar, component preview, and the wall of cards on the home page. |

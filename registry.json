@@ -208,6 +208,31 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "agent-workspace",
+      "type": "registry:block",
+      "title": "Agent workspace",
+      "description": "A workspace where an agent works: sessions, the thread, files and background tasks",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "https://deeplethe.github.io/solid-glass/r/ask-card.json",
+        "https://deeplethe.github.io/solid-glass/r/composer.json",
+        "https://deeplethe.github.io/solid-glass/r/context-ring.json",
+        "https://deeplethe.github.io/solid-glass/r/panel.json",
+        "https://deeplethe.github.io/solid-glass/r/tag.json",
+        "https://deeplethe.github.io/solid-glass/r/tool-steps.json",
+        "kbd"
+      ],
+      "files": [
+        {
+          "path": "src/blocks/agent-workspace.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }

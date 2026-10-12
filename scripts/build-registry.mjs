@@ -27,6 +27,36 @@ const own = readdirSync(join(root, "content/solid"))
   .map((file) => file.replace(/\.mdx$/, ""))
   .sort()
 
+/** What a file needs: the packages it imports, and the components, its own by address and shadcn/ui's by name. */
+function needs(content) {
+  const packages = new Set()
+  const others = new Set()
+  for (const [, source] of content.matchAll(/from "([^"]+)"/g)) {
+    if (source === "react" || source === "@/lib/utils") continue
+    const used = source.match(/^@\/components\/ui\/(.+)$/)?.[1]
+    if (used) others.add(own.includes(used) ? `${origin}/r/${used}.json` : used)
+    else packages.add(source.split("/").slice(0, source.startsWith("@") ? 2 : 1).join("/"))
+  }
+  return { dependencies: [...packages].sort(), registryDependencies: [...others].sort() }
+}
+
+// The blocks: whole screens, one file each. Their titles and descriptions are in src/blocks/index.ts.
+const blockIndex = read("src/blocks/index.ts")
+const blocks = readdirSync(join(root, "src/blocks"))
+  .filter((file) => file.endsWith(".tsx"))
+  .map((file) => {
+    const name = file.replace(/\.tsx$/, "")
+    const entry = blockIndex.slice(blockIndex.indexOf(`name: "${name}"`))
+    return {
+      name,
+      type: "registry:block",
+      title: entry.match(/title: "([^"]*)"/)?.[1],
+      description: entry.match(/description: "([^"]*)"/)?.[1],
+      ...needs(read(`src/blocks/${file}`)),
+      files: [{ path: `src/blocks/${file}`, type: "registry:component" }],
+    }
+  })
+
 const components = own.map((name) => {
   const content = read(`src/components/ui/${name}.tsx`)
   const front = read(`content/solid/${name}.mdx`)
@@ -64,6 +94,7 @@ const registry = {
       files: [{ path: "src/solid-glass.css", type: "registry:file", target: "src/solid-glass.css" }],
     },
     ...components,
+    ...blocks,
   ],
 }
 
@@ -74,4 +105,4 @@ execFileSync("npx", ["shadcn", "build", "registry.json", "--output", "public/r"]
 // The stylesheet as it is, for whoever would rather copy one file than run a command.
 copyFileSync(join(root, "src/solid-glass.css"), join(out, "solid-glass.css"))
 
-console.log(`registry: ${components.length} components and the stylesheet -> registry.json, public/r/`)
+console.log(`registry: ${components.length} components, ${blocks.length} block and the stylesheet -> registry.json, public/r/`)

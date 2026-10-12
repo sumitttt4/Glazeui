@@ -918,6 +918,31 @@
   stroke-width: 1px;
   filter: drop-shadow(0 -1px 0 var(--mark-rim));
 }
+/* The same mark made of a box rather than drawn in a chart: a bar in a row of
+   them, a meter, anything filled with one of the chart's colours. It is the
+   same pane on its edge, so it gets the same three things, and here an inset
+   shadow can draw the line of light where it belongs. */
+.bg-chart-1 { --mark: var(--chart-1); }
+.bg-chart-2 { --mark: var(--chart-2); }
+.bg-chart-3 { --mark: var(--chart-3); }
+.bg-chart-4 { --mark: var(--chart-4); }
+.bg-chart-5 { --mark: var(--chart-5); }
+:is(.bg-chart-1, .bg-chart-2, .bg-chart-3, .bg-chart-4, .bg-chart-5) {
+  background-color: color-mix(in oklch, var(--mark) var(--mark-solid), transparent);
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklch, var(--mark-rim) 55%, transparent),
+    inset 0 0 0 1px var(--mark-edge);
+}
+/* A badge in a chart's colour has words on it, so its fill stays whole; it is
+   a small solid pane, lit along the top and shaded along the bottom. */
+[data-slot="badge"]:is(.bg-chart-1, .bg-chart-2, .bg-chart-3, .bg-chart-4, .bg-chart-5) {
+  background-color: var(--mark);
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 55%),
+    inset 0 -1px 0 oklch(0 0 0 / 22%),
+    inset 0 0 0 1px oklch(0 0 0 / 8%);
+}
+
 /* What a chart says under the pointer floats over it: the thickest glass, like
    any other popover, and with a control's corners rather than a pill's. */
 .recharts-tooltip-wrapper > .bg-background {

@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/banner.png?v=5" alt="Solid Glass, by DeepLethe" width="820">
+<img src="docs/banner-2.png" alt="Solid Glass, by DeepLethe" width="820">
 
 </div>
 
@@ -109,8 +109,10 @@ npm run build       # into dist/
 npm run typecheck
 ```
 
-`/dev/banner` (development only) is the banner above, drawn with the theme: `docs/banner.png` is a
-screenshot of it in an 820 by 200 window at twice the size.
+`/dev/banner` (development only) is the banner above, drawn with the theme: `docs/banner-2.png` is a
+screenshot of it in an 820 by 200 window at twice the size. When the picture changes, save it under
+the next number and point the README at that: GitHub serves a README's pictures from one address
+per file, whatever is added to the link, and a browser keeps what it fetched from it.
 
 `/dev/examples` (development only) mounts every example at once and lists any that fail. It takes
 `?q=button,card` to show some of them, `?theme=light`, `?hover=<selector>` to show what matches as

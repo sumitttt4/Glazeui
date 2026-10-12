@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import Blocks from "@/create/blocks"
 import { Customizer } from "@/create/customizer"
-import { CreateContext, decode, encode, fontFamily, overrides, shared, DEFAULTS, type Options } from "@/create/options"
+import { accent, CreateContext, decode, encode, fontFamily, overrides, shared, DEFAULTS, type Options } from "@/create/options"
 import { Wall } from "@/home/wall"
 import { SolidGlassMark } from "@/site/logo"
 import { useTheme } from "@/site/theme"
@@ -88,6 +88,7 @@ export default function Create() {
     ...overrides(options, theme),
     fontFamily: fontFamily(options.font),
     "--create-heading": fontFamily(options.heading),
+    "--create-accent": accent(options, theme),
   } as React.CSSProperties
 
   return (

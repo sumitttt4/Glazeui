@@ -133,8 +133,9 @@ export const CHART_HUE: Record<string, number> = {
   pink: 350,
   rose: 12,
 }
-const CHART_LIGHT: Record<Mode, number[]> = { dark: [0.94, 0.83, 0.69, 0.56, 0.44], light: [0.87, 0.556, 0.439, 0.371, 0.269] }
-const CHART_CHROMA = [0.07, 0.13, 0.15, 0.13, 0.1]
+const CHART_LIGHT: Record<Mode, number[]> = { dark: [0.94, 0.83, 0.69, 0.56, 0.44], light: [0.8, 0.66, 0.54, 0.44, 0.34] }
+// How much colour each step carries: a light page needs more of it than a dark one to read as the hue.
+const CHART_CHROMA: Record<Mode, number[]> = { dark: [0.07, 0.13, 0.15, 0.13, 0.1], light: [0.11, 0.16, 0.17, 0.15, 0.12] }
 
 const RADIUS: Record<string, [string, string]> = { none: ["0rem", "0rem"], small: ["0.5rem", "0.4rem"], large: ["1.125rem", "0.9rem"] }
 const RIM: Record<string, Record<Mode, [number, number]>> = {
@@ -170,7 +171,7 @@ export function overrides(options: Options, mode: Mode): Record<string, string> 
   if (options.chart !== "neutral") {
     const h = CHART_HUE[options.chart]
     CHART_LIGHT[mode].forEach((l, index) => {
-      vars[`--chart-${index + 1}`] = `oklch(${l} ${CHART_CHROMA[index]} ${h})`
+      vars[`--chart-${index + 1}`] = `oklch(${l} ${CHART_CHROMA[mode][index]} ${h})`
     })
   }
 
@@ -198,6 +199,13 @@ export function shared(options: Options): Record<string, string> {
     vars["--glass-blur-control"] = "blur(24px)"
   }
   return vars
+}
+
+/** The one colour a look has, if it has one: the chart's, or failing that the tint's. */
+export function accent(options: Options, mode: Mode): string | undefined {
+  if (options.chart !== "neutral") return `oklch(${mode === "dark" ? 0.72 : 0.6} 0.17 ${CHART_HUE[options.chart]})`
+  if (options.tint !== "neutral") return `oklch(0.62 0.09 ${TINT[options.tint][mode].h})`
+  return undefined
 }
 
 export const fontFamily = (value: string) => (FONTS.find((font) => font.value === value) ?? FONTS[0]).family

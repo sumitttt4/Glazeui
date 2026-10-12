@@ -171,7 +171,7 @@
   --knob: oklch(1 0 0);
   --knob-shade: oklch(0.3 0.06 265 / 30%);
   /* A mark in a chart is a pane standing on its edge. */
-  --mark-solid: 62%;
+  --mark-solid: 84%;
   --mark-rim: oklch(1 0 0);
   --mark-edge: oklch(0.3 0.02 265 / 22%);
   /* The same hairline where it is a stroke in a chart: half of a stroke falls outside the shape. */
@@ -204,11 +204,11 @@
   --syn-name: oklch(0.47 0.15 310);
 
   /* Charts are drawn in greys, like the rest: no hue of their own. */
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
+  --chart-1: oklch(0.8 0 0);
+  --chart-2: oklch(0.62 0 0);
+  --chart-3: oklch(0.5 0 0);
+  --chart-4: oklch(0.4 0 0);
+  --chart-5: oklch(0.29 0 0);
 
   --sidebar: oklch(0.975 0.004 265 / 44%);
   --sidebar-foreground: oklch(0.25 0 0);

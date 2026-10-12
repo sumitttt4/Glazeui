@@ -22,14 +22,13 @@
 
 </div>
 
-**Form with substance.** A theme for [shadcn/ui](https://ui.shadcn.com), designed for AI
-applications, from agent workspaces to operator consoles: thick, smoky panes of glass
-that read as solid from a distance and as glass only close up. The finish is at the edges (a line of
+**Form with substance.** A design system for AI applications, from agent workspaces to operator
+consoles: thick, smoky panes of glass that read as solid from a distance and as glass only close up. The finish is at the edges (a line of
 light along the top, a hairline all round, a shadow gathered underneath); the face is neutral grey,
 takes no colour from what is behind it, bends nothing and does not flow.
 
-**[deeplethe.github.io/solid-glass](https://deeplethe.github.io/solid-glass)** shows every
-shadcn/ui component in the material, plus a dozen components of Solid Glass's own. On its
+**[deeplethe.github.io/solid-glass](https://deeplethe.github.io/solid-glass)** shows it at work: some
+sixty components in the material, a dozen of them made for interfaces where an agent works. On its
 [Create](https://deeplethe.github.io/solid-glass/create) page the glass can be tuned (thinner, thicker,
 tinted, another radius, another face) and the result copied out as a few lines of CSS.
 

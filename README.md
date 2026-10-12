@@ -30,9 +30,9 @@ takes no colour from what is behind it, bends nothing and does not flow.
 **[deeplethe.github.io/solid-glass](https://deeplethe.github.io/solid-glass)** shows every
 shadcn/ui component in the material, plus a dozen components of Solid Glass's own.
 
-![The home page in the dark theme](docs/screenshots/home-dark.png)
+![The components in the dark theme](docs/screenshots/home-dark.png)
 
-![The home page in the light theme](docs/screenshots/home-light.png)
+![The components in the light theme](docs/screenshots/home-light.png)
 
 It stands between flat design and liquid glass. Flat is an opaque block with no finish to speak of;
 liquid glass is nearly clear, and on a page with a lot of text the reader is always fighting the

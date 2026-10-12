@@ -39,7 +39,7 @@ function GlassWordmark({ children }: { children: string }) {
  * it cannot drift from the material. It fills an 820 by 200 window; `docs/banner.png` is a
  * screenshot of this page at twice that, with a clear background (the corners are see-through).
  *
- * On the left, the name, in glass. On the right, the three thicknesses, panel under card under
+ * On the left, the name, in glass, and who it is by. On the right, the three thicknesses, panel under card under
  * popover, and in the popover the one state, worn by the material's own name between the two it
  * stands between.
  */
@@ -59,7 +59,9 @@ export function DevBanner() {
           <SolidGlassMark className="size-11" />
           <GlassWordmark>Solid Glass</GlassWordmark>
         </div>
-        <p className="pl-0.5 text-[17px] text-muted-foreground">Form with substance.</p>
+        <p className="pl-0.5 text-[17px] text-muted-foreground">
+          by <span className="font-medium text-foreground/90">DeepLethe</span>
+        </p>
       </div>
 
       <div className="relative h-[152px] w-[356px] shrink-0 text-[11px] text-muted-foreground">

@@ -44,7 +44,7 @@ function GlassWordmark({ first, second }: { first: string; second: string }) {
 
 /**
  * Development only (/dev/banner): the banner at the top of the README, drawn with the theme itself so
- * it cannot drift from the material. It fills an 820 by 200 window; `docs/banner-4.webp` is a
+ * it cannot drift from the material. It fills an 820 by 200 window; `docs/banner-5.webp` is a
  * screenshot of this page at twice that, with a clear background (the corners are see-through).
  *
  * On the left, the name, in glass, and who it is by. On the right, what it is for: three panes of the
@@ -70,12 +70,11 @@ export function DevBanner() {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-between overflow-hidden rounded-[16px] bg-background px-11 shadow-[inset_0_0_0_1px_var(--glass-edge)]">
-      {/* Light, so the picture is not flat: one warm patch behind the panes and two fainter ones. Warm
-          and nearly white, like a lamp in a workshop: it keeps the grey grey, and it is the colour of
-          the one thing in the scene that wants attention. The site's dark page has none; this is a
-          poster, not a page to read. */}
-      <span aria-hidden className="absolute top-[70px] left-[440px] size-[250px] rounded-full bg-[oklch(0.82_0.06_65)] opacity-30 blur-[64px]" />
-      <span aria-hidden className="absolute -top-[90px] right-[-40px] size-[220px] rounded-full bg-[oklch(0.88_0.045_75)] opacity-[0.16] blur-[60px]" />
+      {/* Light, so the picture is not flat: a blue patch behind the panes, a fainter teal one in the
+          corner and a touch of white opposite. The site's dark page has none; this is a poster, not a
+          page to read. */}
+      <span aria-hidden className="absolute top-[70px] left-[440px] size-[250px] rounded-full bg-[oklch(0.78_0.1_250)] opacity-40 blur-[64px]" />
+      <span aria-hidden className="absolute -top-[90px] right-[-40px] size-[220px] rounded-full bg-[oklch(0.85_0.07_205)] opacity-25 blur-[60px]" />
       <span aria-hidden className="absolute -bottom-[120px] left-[-60px] size-[260px] rounded-full bg-white opacity-[0.09] blur-[70px]" />
 
       {/* The title block: the name, what it is for, and who it is by. Everything said in words is said
@@ -86,7 +85,7 @@ export function DevBanner() {
           <GlassWordmark first="Solid" second="Glass" />
         </div>
         {/* two lines under the name, in one size and on one edge: what it is for, and who it is by */}
-        <p className="mt-5 pl-[6px] text-[15px] leading-none tracking-tight text-foreground/85">Designed for enterprise AI</p>
+        <p className="mt-5 pl-[6px] text-[15px] leading-none tracking-tight text-foreground/85">Designed for AI applications</p>
         <p className="mt-3 pl-[6px] text-[15px] leading-none text-muted-foreground">
           by <span className="ml-0.5 font-logo text-[15.5px] tracking-[0.14em] text-foreground/85">DeepLethe</span>
         </p>

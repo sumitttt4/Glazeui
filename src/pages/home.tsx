@@ -16,8 +16,7 @@ export function Home() {
         </Link>
         <PageHeaderHeading className="max-w-4xl">Form with substance.</PageHeaderHeading>
         <PageHeaderDescription>
-          For industrial AI panels, operator consoles and dashboards: thick, smoky panes with the weight of a solid surface and the
-          clarity of glass.
+          Designed for AI applications: thick, smoky panes with the weight of a solid surface and the clarity of glass.
         </PageHeaderDescription>
         <PageActions>
           <Link to="/docs/installation" className={cn(buttonVariants(), "h-[35px] px-3")}>

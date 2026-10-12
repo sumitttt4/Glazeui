@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/banner-4.webp" alt="Solid Glass: designed for enterprise AI, by DeepLethe" width="820">
+<img src="docs/banner-5.webp" alt="Solid Glass: designed for AI applications, by DeepLethe" width="820">
 
 </div>
 
@@ -22,8 +22,8 @@
 
 </div>
 
-**Form with substance.** A theme for [shadcn/ui](https://ui.shadcn.com), made for industrial AI
-panels, operator consoles and dashboards: thick, smoky panes of glass
+**Form with substance.** A theme for [shadcn/ui](https://ui.shadcn.com), designed for AI
+applications, from agent workspaces to operator consoles: thick, smoky panes of glass
 that read as solid from a distance and as glass only close up. The finish is at the edges (a line of
 light along the top, a hairline all round, a shadow gathered underneath); the face is neutral grey,
 takes no colour from what is behind it, bends nothing and does not flow.
@@ -109,7 +109,7 @@ npm run build       # into dist/
 npm run typecheck
 ```
 
-`/dev/banner` (development only) is the banner above, drawn with the theme: `docs/banner-4.webp` is a
+`/dev/banner` (development only) is the banner above, drawn with the theme: `docs/banner-5.webp` is a
 screenshot of it in an 820 by 200 window at twice the size, saved as WebP like the other pictures
 here (a quarter of the size of the same picture as PNG). When the picture changes, save it under
 the next number and point the README at that: GitHub serves a README's pictures from one address

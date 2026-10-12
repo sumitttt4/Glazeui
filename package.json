@@ -2,7 +2,7 @@
   "name": "solid-glass",
   "private": true,
   "version": "0.1.0",
-  "description": "A theme for shadcn/ui made for industrial AI panels, operator consoles and dashboards: thick, smoky glass with the weight of a solid surface and the clarity of glass.",
+  "description": "A theme for shadcn/ui designed for AI applications: thick, smoky glass with the weight of a solid surface and the clarity of glass.",
   "license": "MIT",
   "homepage": "https://deeplethe.github.io/solid-glass",
   "repository": {

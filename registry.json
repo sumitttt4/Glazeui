@@ -225,6 +225,7 @@
         "https://deeplethe.github.io/solid-glass/r/panel.json",
         "https://deeplethe.github.io/solid-glass/r/tag.json",
         "https://deeplethe.github.io/solid-glass/r/tool-steps.json",
+        "https://deeplethe.github.io/solid-glass/r/turn-status.json",
         "kbd"
       ],
       "files": [

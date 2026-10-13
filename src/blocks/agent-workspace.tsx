@@ -185,8 +185,8 @@ export default function AgentWorkspace() {
             <SquareTerminalIcon />
           </span>
         </div>
-        <div className="flex min-h-0 flex-1 justify-center overflow-hidden px-6 pt-5">
-          <div className="flex w-full max-w-[600px] flex-col gap-4">
+        <div className="flex min-h-0 flex-1 justify-center overflow-y-auto px-4 pt-5 pb-6 [scrollbar-width:thin] md:px-6">
+          <div className="flex h-fit w-full max-w-[600px] flex-col gap-4">
             <div className="glass-control self-end rounded-2xl bg-secondary px-3.5 py-2 text-sm">
               Survey the related work first, then give me a few directions to choose from.
             </div>
@@ -213,7 +213,7 @@ export default function AgentWorkspace() {
           </div>
         </div>
 
-        <div className="flex shrink-0 justify-center px-6 pb-4">
+        <div className="flex shrink-0 justify-center px-4 pb-4 md:px-6">
           <div className="w-full max-w-[600px]">
             <Composer
               value=""

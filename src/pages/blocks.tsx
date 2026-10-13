@@ -84,7 +84,7 @@ function BlockViewer({ block }: { block: Block }) {
           <iframe
             key={`${theme}-${round}`}
             src={address}
-            title={block.title}
+            aria-label={block.title}
             loading="lazy"
             style={{ width, height: block.height ?? 720 }}
             className="mx-auto block max-w-full bg-background transition-[width] duration-200"

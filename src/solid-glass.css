@@ -478,13 +478,21 @@
     inset 0 -1px 0 color-mix(in oklch, var(--primary-under) 45%, transparent),
     var(--tw-ring-shadow, 0 0 #0000);
 }
+/* A box to tick that was drawn by hand — a square that turns the colour of ink
+   when its row is chosen, as in a list of calendars — is a checkbox, and is
+   finished as one: the same corners, and (below) the same pane or groove. */
+[class*="data-[active=true]:bg-sidebar-primary"] {
+  border-radius: 4px;
+}
+
 /* A switch, a box and a radio have to keep their border — what is inside them
    is placed by it, and without it a switch's knob sits off centre — so on
    these the two lines are the border itself: its top the colour of the light,
    its bottom the colour of the shade, over the pane's own fill. */
 [data-slot="switch"][data-checked],
 [data-slot="checkbox"][data-checked],
-[data-slot="radio-group-item"][data-checked] {
+[data-slot="radio-group-item"][data-checked],
+[class*="data-[active=true]:bg-sidebar-primary"][data-active="true"] {
   border-color: transparent;
   border-top-color: var(--primary-rim);
   border-bottom-color: color-mix(in oklch, var(--primary-under) 45%, transparent);
@@ -926,7 +934,8 @@
 [data-slot="slider-track"],
 [data-slot="switch"]:not([data-checked]),
 [data-slot="checkbox"]:not([data-checked]),
-[data-slot="radio-group-item"]:not([data-checked]) {
+[data-slot="radio-group-item"]:not([data-checked]),
+[class*="data-[active=true]:bg-sidebar-primary"]:not([data-active="true"]) {
   box-shadow:
     inset 0 1px 1.5px var(--well-shade),
     inset 0 -1px 0 var(--well-rim),
@@ -1050,6 +1059,23 @@
   box-shadow:
     inset 0 1px 0 var(--glass-state-rim),
     0 0 0 1px var(--glass-state-edge);
+}
+
+/* Where the thing in that state keeps a border of its own (a button does, and a
+   toggle: one pixel, clear, with the fill stopping inside it), the edge drawn
+   round the outside stood a pixel off the fill and read as a second outline.
+   There the border is the edge, and nothing is drawn outside it. */
+:is(
+    [data-slot="toggle"]:is([data-pressed], [aria-pressed="true"]),
+    [data-slot="toggle-group-item"]:is([data-pressed], [aria-pressed="true"]),
+    [data-slot="menubar-trigger"]:is([aria-expanded="true"], [data-popup-open]),
+    [data-slot="navigation-menu-trigger"][data-popup-open],
+    .glass-held[data-popup-open],
+    .glass-held[aria-expanded="true"],
+    .glass-chosen
+  ).border:not(.border-0):not(:focus-visible):not([aria-invalid="true"]) {
+  border-color: var(--glass-state-edge);
+  box-shadow: inset 0 1px 0 var(--glass-state-rim);
 }
 
 /* Under the pointer, where shadcn/ui paints a hover with its quiet greys: the

@@ -102,7 +102,8 @@ function BlockViewer({ block }: { block: Block }) {
           />
         </div>
       ) : (
-        <div className="flex flex-col gap-3 md:flex-row">
+        <div className="flex flex-col gap-3 md:flex-row md:flex-wrap">
+          {block.note && <p className="w-full text-sm text-muted-foreground">{block.note}</p>}
           {block.files.length > 1 && (
             <div className="glass-panel flex shrink-0 gap-px overflow-x-auto rounded-xl p-1.5 md:w-56 md:flex-col md:self-start">
               {block.files.map((entry, index) => (

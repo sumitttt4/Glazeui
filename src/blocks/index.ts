@@ -66,6 +66,11 @@ export const blocks: Block[] = [
     category: "Sidebar",
     featured: true,
   }),
+  block({ name: "sidebar-03", title: "Sidebar", description: "A sidebar with submenus", category: "Sidebar" }),
+  block({ name: "sidebar-08", title: "Sidebar", description: "An inset sidebar with secondary navigation", category: "Sidebar" }),
+  block({ name: "sidebar-10", title: "Sidebar", description: "A sidebar in a popover", category: "Sidebar" }),
+  block({ name: "sidebar-15", title: "Sidebar", description: "A left and right sidebar", category: "Sidebar" }),
+  block({ name: "sidebar-16", title: "Sidebar", description: "A sidebar with a sticky site header", category: "Sidebar" }),
   block({
     name: "login-04",
     title: "Login",
@@ -79,10 +84,13 @@ export const blocks: Block[] = [
     description: "A login page with a muted background color",
     category: "Login",
   }),
+  block({ name: "login-02", title: "Login", description: "A two column login page with a cover image", category: "Login" }),
+  block({ name: "login-05", title: "Login", description: "A simple email-only login page", category: "Login" }),
   block({
     name: "signup-03",
     title: "Signup",
     description: "A signup page with a muted background color",
     category: "Login",
   }),
+  block({ name: "signup-04", title: "Signup", description: "A signup page with form and image", category: "Login" }),
 ]

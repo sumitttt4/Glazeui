@@ -1035,6 +1035,7 @@
    its own inside the row's. */
 [data-slot="sidebar-menu-button"][data-active]:not([data-active="false"]),
 [data-slot="sidebar-menu-button"][aria-expanded="true"],
+[data-slot="sidebar-menu-sub-button"][data-active]:not([data-active="false"]),
 [role="menu"] [role^="menuitem"][data-highlighted],
 [role="option"][data-highlighted],
 [data-slot="command-item"][data-selected="true"],

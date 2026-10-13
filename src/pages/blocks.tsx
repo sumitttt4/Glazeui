@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils"
 import { blocks, type Block } from "@/blocks"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Toaster } from "@/components/ui/sonner"
+import { StatusGlyph } from "@/components/ui/status-glyph"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import { CodeBlock } from "@/site/code"
 import { PageActions, PageHeader, PageHeaderDescription, PageHeaderHeading } from "@/site/page-header"
@@ -27,6 +28,10 @@ function BlockViewer({ block }: { block: Block }) {
   const [round, setRound] = React.useState(0)
   const { isCopied, copyToClipboard } = useCopyToClipboard()
   const [file, setFile] = React.useState(0)
+  // The frame is kept out of sight until what is in it has been drawn: a window that is still
+  // loading is white for a moment, and on a dark page that is a flash.
+  const frame = `${theme}-${round}`
+  const [drawn, setDrawn] = React.useState("")
   // Solid Glass's own come from its registry; shadcn/ui's from shadcn/ui, and take the material from the stylesheet.
   const command = block.own ? `npx shadcn@latest add ${window.location.origin}${base}/r/${block.name}.json` : `npx shadcn@latest add ${block.name}`
   // The frame is a window of its own: it is told the theme, and loaded again when the theme changes.
@@ -80,14 +85,20 @@ function BlockViewer({ block }: { block: Block }) {
       </div>
 
       {view === "preview" ? (
-        <div className="overflow-hidden rounded-xl border bg-transparent p-0">
+        <div style={{ height: block.height ?? 720 }} className="relative overflow-hidden rounded-xl border bg-transparent p-0">
+          {drawn !== frame && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <StatusGlyph activity="running" />
+            </div>
+          )}
           <iframe
-            key={`${theme}-${round}`}
+            key={frame}
             src={address}
             aria-label={block.title}
             loading="lazy"
-            style={{ width, height: block.height ?? 720 }}
-            className="mx-auto block max-w-full bg-background transition-[width] duration-200"
+            onLoad={() => window.setTimeout(() => setDrawn(frame), 120)}
+            style={{ width }}
+            className={cn("relative mx-auto block h-full max-w-full transition-[width,opacity] duration-200", drawn !== frame && "opacity-0")}
           />
         </div>
       ) : (

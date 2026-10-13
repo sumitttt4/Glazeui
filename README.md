@@ -8,7 +8,7 @@
 
 <div align="center">
 
-[Install](#install) · [What is here](#what-is-here) · [Run](#run) · [Licence](#licence)
+[The style](#the-style) · [Install](#install) · [What is here](#what-is-here) · [Contributing](#contributing)
 
 [![Stars](https://img.shields.io/github/stars/deeplethe/solid-glass?style=flat-square&label=STARS&labelColor=161B22&color=FFC220&logo=github&logoColor=FFFFFF)](https://github.com/deeplethe/solid-glass/stargazers)
 [![License](https://img.shields.io/badge/LICENSE-MIT-3FB950?style=flat-square&labelColor=161B22)](LICENSE)
@@ -48,6 +48,44 @@ background for the words. Solid Glass lets only an outline through: enough to kn
 enough to get in the way of reading.
 
 ![One panel three ways: flat, Solid Glass, liquid glass](docs/screenshots/compare.webp)
+
+## The style
+
+Solid Glass is glass with the transparency taken out of it. A pane is thick and smoke-grey and lets
+almost nothing through; what makes it glass is how it is finished at its edges. Four rules hold all
+of it together:
+
+| Rule | What it means |
+|---|---|
+| **The finish is at the edge** | A line of light along the top, a hairline all round, a shadow gathered underneath. Never a gradient or a highlight across the face. |
+| **Heavy, not airy** | Neutral grey. The blur softens what is behind a pane without boosting its colour, and a pane takes no colour from what it lies on. |
+| **Depth is thickness** | Panels are thinnest, cards in between, anything that floats is thickest, and thicker is more opaque. What is above what is read from the glass itself. |
+| **One state** | Hovered, chosen and held open all wear the same small pane of clear glass, in a sidebar, a menu and a tab alike. |
+
+### Why it is built this way
+
+An AI application is mostly text that arrives on its own schedule: answers streaming in, steps being
+taken, something waiting for a yes. People read it for hours. The material is chosen for that.
+
+- **Words stay readable, whatever is behind them.** A pane is nearly opaque and neutral, so text
+  always sits on an even surface. Nothing generated, scrolled or animated behind a pane can come
+  through it and compete with what is on it.
+- **Depth without colour.** Thicker is more opaque, so a menu or an approval that needs you is
+  plainly on top without being painted a different colour to say so.
+- **Colour is left free to mean something.** The glass has no hue of its own. A status dot, a
+  failing step, a series in a chart: when colour appears, it is saying something.
+- **One state to learn.** In a dense interface there is one answer to "which one?", wherever you
+  are looking.
+- **Motion is kept for work in progress.** The marks that move are the ones that say an agent is
+  thinking, searching, running or writing; when they stop, it is done or waiting for you.
+- **Finished at the edge, so it is cheap to draw.** A pane is a fill, a line of light, a hairline
+  and a shadow. No gradients across the face, no refraction, no canvas: ordinary CSS, which turns
+  fully opaque for anyone whose system asks for less transparency.
+- **Nothing to migrate.** It is one stylesheet over the shadcn/ui components you already have. They
+  stay as installed, in light and dark.
+
+The [Material](https://deeplethe.github.io/solid-glass/docs/material) page shows each rule at work,
+and the [Create](https://deeplethe.github.io/solid-glass/create) page lets you turn the dials.
 
 ## Install
 
@@ -104,6 +142,7 @@ npx shadcn@latest add https://deeplethe.github.io/solid-glass/r/status-glyph.jso
 | `src/examples/` | One small file per example, as on ui.shadcn.com: shadcn/ui's own examples, and Solid Glass's for its own components. |
 | `content/` | The documentation. `components/` is shadcn/ui's page for each component; `solid/` and `docs/` are Solid Glass's. |
 | `src/site/`, `src/pages/`, `src/home/` | The site: header, sidebar, component preview, and the wall of cards on the home page. |
+| `.github/` | The checks every pull request must pass (`checks.yml`), the workflow that publishes `main` (`pages.yml`), and the templates for issues and pull requests. |
 | `scripts/build-docs.mjs` | Turns `content/` into `src/docs/generated.json`, which the site renders. |
 
 ## Run
@@ -139,6 +178,14 @@ repository's GitHub Pages.
 
 Keep to the four rules (the Material page shows them): the finish is at the edge; heavy, not airy;
 depth is thickness; one state.
+
+## Contributing
+
+Changes land on `dev` by pull request and reach `main`, and with it the published site and
+registry, when a maintainer merges `dev` into it. [CONTRIBUTING.md](CONTRIBUTING.md) has the rest
+([中文](CONTRIBUTING.zh-CN.md)): what to open an issue for first, what to run before pushing, and
+what review sends back. How we treat each other is in the [Code of Conduct](CODE_OF_CONDUCT.md);
+security reports go to the address in [SECURITY.md](SECURITY.md).
 
 ## Licence
 

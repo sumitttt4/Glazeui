@@ -1,0 +1,6 @@
+# Maintainers file issues without a form, so blank issues stay on.
+blank_issues_enabled: true
+contact_links:
+  - name: Security problem / 安全问题
+    url: https://github.com/deeplethe/solid-glass/blob/main/SECURITY.md#reporting-a-vulnerability
+    about: Report it by email, not in a public issue.

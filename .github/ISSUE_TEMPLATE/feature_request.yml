@@ -1,0 +1,31 @@
+name: Feature request / 功能建议
+description: A component, a block, or something the material should do. 组件、区块，或材质应当做到的事。
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        English or 中文, either is fine.
+
+        Start from the screen you are trying to build; the use case decides the design more than the feature does.
+        A change to the material itself (what a token means, the four rules, how a state looks) is discussed here before any code.
+  - type: textarea
+    id: use-case
+    attributes:
+      label: What you are trying to build / 想做成什么
+      description: >-
+        The screen or the interaction, and where Solid Glass stops short today.
+        界面或交互，以及现在卡在哪里。
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would help / 希望怎样
+      description: >-
+        If you have a shape in mind: a sketch, a link to something similar, the parts it would have.
+        如果已有想法：草图、类似实现的链接、它由哪些部分组成。
+  - type: textarea
+    id: tried
+    attributes:
+      label: What you do today instead / 目前的替代做法

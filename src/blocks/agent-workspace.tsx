@@ -213,6 +213,9 @@ const REPLIES_AFTER = 1600
 
 const INDENT = 12
 
+/** Whether the window is at least so wide: asked when something is pressed, to know which of two things it should do. */
+const wide = (query: string) => window.matchMedia(query).matches
+
 /** Whether a node or anything under it has `query` in its name. */
 const matches = (node: Node, query: string): boolean => node.name.toLowerCase().includes(query) || !!node.children?.some((child) => matches(child, query))
 
@@ -340,6 +343,13 @@ export default function AgentWorkspace() {
   React.useEffect(() => () => window.clearTimeout(answering.current), [])
 
   const [panels, setPanels] = React.useState({ files: true, tasks: true })
+  // On a narrow window there is room for the thread only: the sessions and the panels are drawn
+  // over it instead, one at a time, and this says which is out.
+  const [drawer, setDrawer] = React.useState<"sessions" | "panels" | null>(null)
+  // a drawer with nothing left in it goes back in
+  React.useEffect(() => {
+    if (!panels.files && !panels.tasks) setDrawer((now) => (now === "panels" ? null : now))
+  }, [panels])
   const [tree, setTree] = React.useState(TREE)
   const [open, setOpen] = React.useState(() => new Set(["survey", "research"]))
   const [chosen, setChosen] = React.useState("survey/notes.md")
@@ -399,6 +409,15 @@ export default function AgentWorkspace() {
     setSessions((all) => [{ id, group: groups[0], name: "New chat", turns: [] }, ...all])
     setCurrent(id)
     setFinding(null)
+    setDrawer(null)
+  }
+
+  /** The bar's button for a panel: beside the thread it is shown or hidden; over the thread, brought out. */
+  const panel = (name: "files" | "tasks") => {
+    if (wide("(min-width: 64rem)")) return setPanels((now) => ({ ...now, [name]: !now[name] }))
+    const out = drawer === "panels" && panels[name]
+    setPanels((now) => ({ ...now, [name]: true }))
+    setDrawer(out ? null : "panels")
   }
 
   const file = chosen.split("/").pop() ?? ""
@@ -407,15 +426,31 @@ export default function AgentWorkspace() {
 
   return (
     <div className="flex h-svh min-h-[640px] overflow-hidden bg-background text-[13px] text-foreground">
-      {/* sessions */}
-      {sidebar && (
-        <aside className="hidden w-[216px] shrink-0 flex-col border-r bg-sidebar md:flex">
+      {/* what is behind a drawer, dimmed; pressed, the drawer goes back in */}
+      {drawer && (
+        <button
+          type="button"
+          aria-label="Close"
+          onClick={() => setDrawer(null)}
+          className={cn("fixed inset-0 z-20 bg-black/45", drawer === "sessions" ? "md:hidden" : "lg:hidden")}
+        />
+      )}
+
+      {/* sessions: beside the thread where there is room, over it where there is not */}
+      {(sidebar || drawer === "sessions") && (
+        <aside
+          className={cn(
+            "w-[216px] shrink-0 flex-col border-r bg-sidebar",
+            sidebar ? "md:flex" : "md:hidden",
+            drawer === "sessions" ? "max-md:fixed max-md:inset-y-0 max-md:left-0 max-md:z-30 max-md:flex max-md:w-[272px] max-md:max-w-[85vw] max-md:bg-(--popover)" : "max-md:hidden"
+          )}
+        >
           {/* The tile is wider than a row's icon, so it is centred on the icons' column and its name starts
               where the rows' words do: one line down the side for the marks, one for the words. */}
           <div className="flex h-12 items-center gap-[5px] pr-2 pl-[11px]">
             <span className="glass-chosen flex size-5 items-center justify-center rounded-[6px] text-[10px] font-semibold">R</span>
             <span className="text-sm font-medium">Research</span>
-            <IconButton label="Hide sessions" className="ml-auto" onClick={() => setSidebar(false)}>
+            <IconButton label="Hide sessions" className="ml-auto" onClick={() => (wide("(min-width: 48rem)") ? setSidebar(false) : setDrawer(null))}>
               <PanelLeftIcon />
             </IconButton>
           </div>
@@ -456,7 +491,14 @@ export default function AgentWorkspace() {
                   <p className="px-3.5 pt-5 pb-1 text-xs text-muted-foreground">{group}</p>
                   <div className="flex flex-col gap-px px-1.5">
                     {rows.map((each) => (
-                      <PanelRow key={each.id} chosen={each.id === session.id} onClick={() => setCurrent(each.id)}>
+                      <PanelRow
+                        key={each.id}
+                        chosen={each.id === session.id}
+                        onClick={() => {
+                          setCurrent(each.id)
+                          setDrawer(null)
+                        }}
+                      >
                         <span className="truncate">{each.name}</span>
                       </PanelRow>
                     ))}
@@ -475,18 +517,17 @@ export default function AgentWorkspace() {
       {/* the thread */}
       <main className="flex min-w-0 flex-1 flex-col">
         <div className="flex h-12 shrink-0 items-center gap-1.5 px-3">
-          {!sidebar && (
-            <IconButton label="Show sessions" className="hidden md:flex" onClick={() => setSidebar(true)}>
-              <PanelLeftIcon />
-            </IconButton>
-          )}
+          {/* always there on a narrow window; on a wide one, only while the sessions are hidden */}
+          <IconButton label="Show sessions" className={cn(sidebar && "md:hidden")} onClick={() => (wide("(min-width: 48rem)") ? setSidebar(true) : setDrawer("sessions"))}>
+            <PanelLeftIcon />
+          </IconButton>
           <span className="min-w-0 truncate px-1 text-sm font-medium">{session.name}</span>
           {/* the panels at the side, each opened and shut from here */}
-          <span className="ml-auto hidden items-center gap-1 lg:flex">
-            <IconButton label="Background tasks" pressed={panels.tasks} onClick={() => setPanels((now) => ({ ...now, tasks: !now.tasks }))}>
+          <span className="ml-auto flex items-center gap-1">
+            <IconButton label="Background tasks" pressed={panels.tasks} onClick={() => panel("tasks")}>
               <ListChecksIcon />
             </IconButton>
-            <IconButton label="Files" pressed={panels.files} onClick={() => setPanels((now) => ({ ...now, files: !now.files }))}>
+            <IconButton label="Files" pressed={panels.files} onClick={() => panel("files")}>
               <FolderIcon />
             </IconButton>
           </span>
@@ -578,7 +619,12 @@ export default function AgentWorkspace() {
 
       {/* what it has made, and what it is running */}
       {(panels.files || panels.tasks) && (
-        <aside className="hidden w-[272px] shrink-0 flex-col gap-3 py-3 pr-3 lg:flex">
+        <aside
+          className={cn(
+            "w-[272px] shrink-0 flex-col gap-3 py-3 pr-3 lg:flex",
+            drawer === "panels" ? "max-lg:fixed max-lg:inset-y-0 max-lg:right-0 max-lg:z-30 max-lg:flex max-lg:w-[300px] max-lg:max-w-[88vw] max-lg:border-l max-lg:bg-background max-lg:pl-3" : "max-lg:hidden"
+          )}
+        >
           {panels.files && (
             <Panel
               title="Files"

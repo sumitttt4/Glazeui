@@ -68,7 +68,6 @@ export const blocks: Block[] = [
   }),
   block({ name: "sidebar-03", title: "Sidebar", description: "A sidebar with submenus", category: "Sidebar" }),
   block({ name: "sidebar-08", title: "Sidebar", description: "An inset sidebar with secondary navigation", category: "Sidebar" }),
-  block({ name: "sidebar-10", title: "Sidebar", description: "A sidebar in a popover", category: "Sidebar" }),
   block({ name: "sidebar-15", title: "Sidebar", description: "A left and right sidebar", category: "Sidebar" }),
   block({ name: "sidebar-16", title: "Sidebar", description: "A sidebar with a sticky site header", category: "Sidebar" }),
   block({

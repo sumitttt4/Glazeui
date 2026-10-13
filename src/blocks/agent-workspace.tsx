@@ -31,10 +31,34 @@ import { StepGroup, type Step } from "@/components/ui/tool-steps"
  * of the file; replace it with your own.
  */
 
+// What it wrote, as the patch it made: the row for it opens as a diff.
+const NOTES = `@@ -0,0 +1,7 @@
++# Interface coatings for sulfide electrolytes
++
++Six papers, three ways forward:
++
++- Coat the cathode: the most data, the quickest check.
++- Change the dopant: a higher ceiling, new samples needed.
++- Benchmark only: nothing new to make, the least to learn.
+`
+
+// Each step is one line, and opens to the call itself: what was asked for, and what came back.
 const STEPS: Step[] = [
-  { id: "search", label: "Searched for “sulfide electrolytes, interface stability”", status: "done" },
-  { id: "read", label: "Read 6 papers", status: "done" },
-  { id: "write", label: "Wrote survey/notes.md", status: "done" },
+  {
+    id: "search",
+    label: "Searched for “sulfide electrolytes, interface stability”",
+    status: "done",
+    detail: "sulfide electrolytes, interface stability",
+    detailLabel: "Query",
+    output: "14 results, 6 kept\ncoating-review.pdf\nsulfide-interfaces.pdf\ndopant-screening.pdf\ngarnet-stability.pdf\ncycle-life.csv\nbaseline.yaml",
+  },
+  {
+    id: "read",
+    label: "Read 6 papers",
+    status: "done",
+    output: "coating-review.pdf        42 pages\nsulfide-interfaces.pdf    18 pages\ndopant-screening.pdf      11 pages\ngarnet-stability.pdf      23 pages\n2 data files read as tables",
+  },
+  { id: "write", label: "Wrote survey/notes.md", status: "done", patch: NOTES },
 ]
 
 const DIRECTIONS = [

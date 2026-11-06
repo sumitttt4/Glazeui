@@ -21,7 +21,18 @@ import { GitHubButton, REPO_URL } from "@/site/github"
 import { agents, components, docs, urlOf } from "@/site/pages"
 import { useTheme } from "@/site/theme"
 import { useMaterial } from "@/site/material"
-import { MaterialPicker } from "@/components/ui/material-picker"
+import { MATERIALS, type Material } from "@/components/ui/material-picker"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import { GithubIcon, ThemeIcon } from "@/components/ui/animated-icons"
 import catalog from "@/site/catalog.generated.json"
 
@@ -280,9 +291,58 @@ function ModeSwitcher() {
   )
 }
 
+const SWATCH: Record<Material, string> = {
+  solid: "bg-[var(--primary)]",
+  glass: "bg-[linear-gradient(135deg,oklch(1_0_0/70%),oklch(0.6_0.02_265/40%))]",
+  frost: "bg-[linear-gradient(135deg,oklch(0.8_0.15_200/80%),oklch(0.75_0.17_330/70%))]",
+  aurora: "bg-[conic-gradient(from_0deg,oklch(0.72_0.17_265),oklch(0.8_0.14_200),oklch(0.78_0.15_340),oklch(0.72_0.17_265))]",
+}
+
+function Swatch({ material }: { material: Material }) {
+  return <span aria-hidden className={cn("size-2.5 shrink-0 rounded-full ring-1 ring-black/10", SWATCH[material])} />
+}
+
+/** The site's finish, as a compact dropdown: the current one shown, all four a click away. */
 function HeaderMaterial() {
   const { material, setMaterial } = useMaterial()
-  return <MaterialPicker compact value={material} onValueChange={setMaterial} className="hidden xl:inline-flex" />
+  const current = MATERIALS.find((m) => m.value === material) ?? MATERIALS[0]
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger
+        render={<Button variant="ghost" size="sm" className="glass-held hidden h-8 gap-1.5 px-2.5 text-[13px] font-medium sm:inline-flex" />}
+        aria-label={`Finish: ${current.label}`}
+      >
+        <Swatch material={current.value} />
+        {current.label}
+        <svg aria-hidden viewBox="0 0 16 16" className="size-3.5 text-muted-foreground" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+          <path d="m4.5 6.5 3.5 3.5 3.5-3.5" />
+        </svg>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="w-56">
+        <DropdownMenuGroup>
+        <DropdownMenuLabel className="text-xs text-muted-foreground">Finish</DropdownMenuLabel>
+        <DropdownMenuRadioGroup value={material} onValueChange={(value) => setMaterial(value as Material)}>
+          {MATERIALS.map((m) => (
+            <DropdownMenuRadioItem key={m.value} value={m.value} className="gap-2.5 py-1.5">
+              <Swatch material={m.value} />
+              <span className="flex flex-col">
+                <span>{m.label}</span>
+                <span className="text-xs text-muted-foreground">{m.note}</span>
+              </span>
+            </DropdownMenuRadioItem>
+          ))}
+        </DropdownMenuRadioGroup>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem render={<Link to="/studies/light" />} className="py-1.5">
+          <span className="flex flex-col">
+            <span>Light studies</span>
+            <span className="text-xs text-muted-foreground">Genda, Mor, Diya, Kolam, Bawdi</span>
+          </span>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
 }
 
 export function SiteHeader() {

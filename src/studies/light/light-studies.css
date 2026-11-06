@@ -1,0 +1,92 @@
+/*
+ * Light studies: five concept motifs for a possible Glaze finish (Genda, Mor, Diya, Kolam, Bawdi).
+ * Everything here is scoped to [data-light-studies], the preview page at /studies/light. Nothing in
+ * glaze.css, materials.css or solid-glass.css is changed or read back.
+ */
+[data-light-studies] {
+  /* The Braj palette of the reference sheet: interpretation, not a standard. */
+  --ls-ivory: #faf7f2;
+  --ls-ivory-card: #fffcf5;
+  --ls-ink: #1f1a15;
+  --ls-ink-muted: #6b6157;
+  --ls-hairline: color-mix(in oklab, var(--ls-ink) 12%, transparent);
+  --ls-saffron: #f2992e;
+  --ls-kesar: #e8761e;
+  --ls-sona: #d4a548;
+  --ls-sindoor: #b3321f;
+  --ls-maroon: #2a0d10;
+  --ls-neel: #0b1030;
+  --ls-neel-raised: #151d4f;
+  --ls-mor: #0f6f6a;
+  --ls-gulabi: #e79ab8;
+  --ls-chandan: #ead6b8;
+  --ls-skeleton-warm: #ead3c2;
+  --ls-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+
+  background: var(--ls-ivory);
+  color: var(--ls-ink);
+  color-scheme: light;
+}
+
+[data-light-studies] .ls-art svg,
+[data-light-studies] .ls-card svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Motion: small, slow and only on cheap properties (transform, opacity). Off under reduced motion,
+   where every element already rests in a finished, static state. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-light-studies] .ls-drift {
+    animation: ls-drift var(--ls-dur, 9s) ease-in-out var(--ls-delay, 0s) infinite alternate;
+  }
+  [data-light-studies] .ls-rise {
+    animation: ls-rise var(--ls-dur, 6s) linear var(--ls-delay, 0s) infinite;
+  }
+  [data-light-studies] .ls-flicker {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: ls-flicker 2.6s ease-in-out infinite alternate;
+  }
+  [data-light-studies] .ls-breathe {
+    animation: ls-breathe 5s ease-in-out infinite alternate;
+  }
+  [data-light-studies] .ls-trace {
+    animation: ls-trace 16s linear infinite;
+  }
+  [data-light-studies] .ls-shimmer {
+    animation: ls-shimmer 7s ease-in-out infinite alternate;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  /* The travelling spark on the filament has no resting place; it is simply not drawn. */
+  [data-light-studies] .ls-trace { display: none; }
+}
+
+@keyframes ls-drift {
+  from { transform: translate(0, 0); }
+  to { transform: translate(var(--ls-dx, 6px), var(--ls-dy, -10px)); }
+}
+@keyframes ls-rise {
+  0% { transform: translateY(0); opacity: 0; }
+  15% { opacity: var(--ls-o, 0.8); }
+  100% { transform: translateY(-70px); opacity: 0; }
+}
+@keyframes ls-flicker {
+  0% { transform: scale(1, 1); }
+  40% { transform: scale(0.985, 1.025); }
+  100% { transform: scale(1.01, 0.985); }
+}
+@keyframes ls-breathe {
+  from { opacity: 0.82; }
+  to { opacity: 1; }
+}
+@keyframes ls-trace {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes ls-shimmer {
+  from { opacity: 0.55; transform: translate(-3px, -2px); }
+  to { opacity: 0.9; transform: translate(3px, 2px); }
+}

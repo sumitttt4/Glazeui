@@ -16,6 +16,8 @@ const Collection = React.lazy(() => import("@/pages/collection"))
 const Library = React.lazy(() => import("@/pages/library"))
 const DevWorst = React.lazy(() => import("@/pages/dev-worst"))
 const DevLaunch = React.lazy(() => import("@/pages/dev-launch"))
+// Concept studies for a future finish: a page of its own, fetched only when visited.
+const LightStudies = React.lazy(() => import("@/studies/light/page"))
 // The blocks carry their own source to show it: fetched with the Blocks page, not with every page.
 const Blocks = React.lazy(() => import("@/pages/blocks").then((page) => ({ default: page.Blocks })))
 const BlockView = React.lazy(() => import("@/pages/blocks").then((page) => ({ default: page.BlockView })))
@@ -38,6 +40,8 @@ export function App() {
   if (import.meta.env.DEV && pathname === "/dev/banner") return <DevBanner />
   // The launch video, drawn frame by frame for video/render.mjs.
   if (import.meta.env.DEV && pathname === "/dev/launch") return <React.Suspense fallback={null}><DevLaunch /></React.Suspense>
+  // The light studies stand on their own ground: no header, no footer, none of the site's theme.
+  if (pathname === "/studies/light") return <React.Suspense fallback={null}><LightStudies /></React.Suspense>
   // A block by itself, in a window of its own: no header, no footer round it.
   if (pathname.startsWith("/view/")) {
     return (

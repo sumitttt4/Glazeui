@@ -33,6 +33,7 @@ import catalog from "@/site/catalog.generated.json"
 import { useMaterial } from "@/site/material"
 import { ShaderStage } from "@/site/shader-stage"
 import { addCommand, GitHubButton, REPO_URL } from "@/site/github"
+import { LIGHT_STAGES, stageAccent, type LightStage } from "@/studies/light/stages"
 import "./home.css"
 
 const count = (category: string) => catalog.filter((e) => e.category === category).length
@@ -124,36 +125,122 @@ function UsageCard() {
   )
 }
 
+type Stage = Material | LightStage["slug"]
+
+/**
+ * The four finishes, then the five light studies, in one row of tabs. A study puts its own light
+ * behind the components (Glass finish, accent tinted to match) instead of the shader backdrop.
+ */
+function StagePicker({ value, onValueChange }: { value: Stage; onValueChange: (value: Stage) => void }) {
+  const all: { value: Stage; label: string; note: string; swatch: React.ReactNode }[] = [
+    ...MATERIALS.map((m) => ({ value: m.value as Stage, label: m.label, note: m.note, swatch: <MaterialSwatch material={m.value} /> })),
+    ...LIGHT_STAGES.map((s) => ({
+      value: s.slug as Stage,
+      label: s.name,
+      note: `Light study: ${s.note}`,
+      swatch: <span aria-hidden className="size-2.5 shrink-0 rounded-full ring-1 ring-black/10" style={{ background: s.swatch }} />,
+    })),
+  ]
+  const tab = (item: (typeof all)[number]) => {
+    const checked = item.value === value
+    return (
+      <button
+        key={item.value}
+        type="button"
+        role="radio"
+        aria-checked={checked}
+        data-value={item.value}
+        tabIndex={checked ? 0 : -1}
+        title={item.note}
+        onClick={() => onValueChange(item.value)}
+        className={cn(
+          "text-muted-foreground hover:text-foreground flex h-8 shrink-0 cursor-pointer items-center gap-1.5 rounded-full px-3 text-xs transition-[background-color,color,box-shadow] outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]",
+          checked && "bg-card text-foreground shadow-[0_1px_2px_oklch(0_0_0/12%),0_0_0_1px_var(--border)]"
+        )}
+      >
+        {item.swatch}
+        {item.label}
+      </button>
+    )
+  }
+  return (
+    <div
+      role="radiogroup"
+      aria-label="Finish or light study"
+      className="no-scrollbar bg-muted inline-flex max-w-full items-center gap-0.5 overflow-x-auto rounded-full p-1"
+      onKeyDown={(event) => {
+        const index = all.findIndex((item) => item.value === value)
+        const step = event.key === "ArrowRight" || event.key === "ArrowDown" ? 1 : event.key === "ArrowLeft" || event.key === "ArrowUp" ? -1 : 0
+        if (!step) return
+        event.preventDefault()
+        const next = all[(index + step + all.length) % all.length]
+        onValueChange(next.value)
+        event.currentTarget.querySelector<HTMLElement>(`[data-value="${next.value}"]`)?.focus()
+      }}
+    >
+      {all.slice(0, MATERIALS.length).map(tab)}
+      <span aria-hidden className="bg-border mx-1 h-4 w-px shrink-0" />
+      {all.slice(MATERIALS.length).map(tab)}
+    </div>
+  )
+}
+
+/** The material's own swatch, as the picker in the header draws it. */
+function MaterialSwatch({ material }: { material: Material }) {
+  const swatch: Record<Material, string> = {
+    solid: "bg-[var(--primary)]",
+    glass: "bg-[linear-gradient(135deg,oklch(1_0_0/70%),oklch(0.6_0.02_265/40%))]",
+    frost: "bg-[linear-gradient(135deg,oklch(0.8_0.15_200/80%),oklch(0.75_0.17_330/70%))]",
+    aurora: "bg-[conic-gradient(from_0deg,oklch(0.72_0.17_265),oklch(0.8_0.14_200),oklch(0.78_0.15_340),oklch(0.72_0.17_265))] animate-[spin_6s_linear_infinite]",
+  }
+  return <span aria-hidden className={cn("size-2.5 shrink-0 rounded-full ring-1 ring-black/10", swatch[material])} />
+}
+
 function HeroShowcase() {
   const { material } = useMaterial()
-  const [stage, setStage] = React.useState<Material>(material === "solid" ? "aurora" : material)
+  const [stage, setStage] = React.useState<Stage>(material === "solid" ? "aurora" : material)
+  const study = LIGHT_STAGES.find((s) => s.slug === stage)
+  const content = (
+    <div className="grid gap-3 sm:gap-4 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,1fr)]">
+      <ChatWindow
+        respond={demoRespond}
+        className="h-[500px] max-w-none"
+        greeting="What are we building?"
+        suggestions={[
+          { title: "Explain glass materials", icon: MagicWand01Icon },
+          { title: "Write a follow-up email", icon: AiChat02Icon },
+        ]}
+      />
+      <div className="flex flex-col gap-3 sm:gap-4">
+        <VoiceCard />
+        <SettingsCard />
+      </div>
+      <div className="flex flex-col gap-3 sm:gap-4 max-lg:hidden">
+        <SignInCard />
+        <UsageCard />
+      </div>
+    </div>
+  )
   return (
     <div className="relative">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-        <p className="text-muted-foreground text-sm">Live components. Try a finish.</p>
-        <MaterialPicker value={stage} onValueChange={setStage} />
+        <p className="text-muted-foreground text-sm">Live components. Try a finish, or a light study.</p>
+        <StagePicker value={stage} onValueChange={setStage} />
       </div>
-      <ShaderStage material={stage} palette="hero" animate className="hero-stage rounded-[28px] p-3 sm:p-5">
-        <div className="grid gap-3 sm:gap-4 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,1fr)]">
-          <ChatWindow
-            respond={demoRespond}
-            className="h-[500px] max-w-none"
-            greeting="What are we building?"
-            suggestions={[
-              { title: "Explain glass materials", icon: MagicWand01Icon },
-              { title: "Write a follow-up email", icon: AiChat02Icon },
-            ]}
-          />
-          <div className="flex flex-col gap-3 sm:gap-4">
-            <VoiceCard />
-            <SettingsCard />
+      {study ? (
+        <div className={cn("hero-stage relative isolate overflow-hidden rounded-[28px]", study.dark && "dark")}>
+          <div aria-hidden className="absolute inset-0 -z-10">
+            <study.Art still className="size-full" />
           </div>
-          <div className="flex flex-col gap-3 sm:gap-4 max-lg:hidden">
-            <SignInCard />
-            <UsageCard />
+          <div data-material="glass" style={stageAccent(study)} className="p-3 text-foreground sm:p-5">
+            {content}
           </div>
         </div>
-      </ShaderStage>
+      ) : (
+        <ShaderStage material={stage as Material} palette="hero" animate className="hero-stage rounded-[28px] p-3 sm:p-5">
+          {content}
+        </ShaderStage>
+      )}
     </div>
   )
 }
